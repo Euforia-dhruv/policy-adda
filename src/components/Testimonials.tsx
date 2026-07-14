@@ -1,44 +1,42 @@
 import { testimonials } from '../data/testimonials'
+import { Reveal, Section } from './ui'
 
 export function Testimonials() {
   return (
-    <section
-      aria-labelledby="testimonials-heading"
-      className="container-page py-16 lg:py-24"
-    >
-      <div className="max-w-2xl">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-clay-dark">
+    <Section tone="sand" as="div">
+      <Reveal className="max-w-2xl">
+        <span className="eyebrow">
+          <span className="h-px w-6 bg-current opacity-50" aria-hidden="true" />
           From the Adda
-        </p>
-        <h2 id="testimonials-heading" className="text-3xl font-semibold sm:text-4xl">
+        </span>
+        <h2 className="mt-4 text-display-md font-semibold sm:text-display-lg">
           People who came back because someone picked up.
         </h2>
-      </div>
+      </Reveal>
 
       <div className="mt-12 grid gap-6 md:grid-cols-3">
-        {testimonials.map((t) => (
-          <figure
-            key={t.id}
-            className="flex h-full flex-col rounded-blob border border-ink/10 bg-sand/50 p-6 shadow-card"
-          >
-            <blockquote className="flex-1 text-sm leading-relaxed text-ink">
-              <span className="font-display text-4xl leading-none text-clay">
+        {testimonials.map((t, i) => (
+          <Reveal key={t.id} delay={i * 0.08}>
+            <figure className="flex h-full flex-col rounded-blob border border-ink/10 bg-paper p-7 shadow-card">
+              <span className="font-display text-5xl leading-none text-clay/30" aria-hidden="true">
                 &ldquo;
               </span>
-              {t.quote}
-            </blockquote>
-            <figcaption className="mt-5 flex items-center gap-3 border-t border-ink/10 pt-4">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-ink text-sm font-semibold text-paper">
-                {t.initials}
-              </span>
-              <span>
-                <span className="block text-sm font-semibold">{t.clientType}</span>
-                <span className="block text-xs text-ink-soft">{t.location}</span>
-              </span>
-            </figcaption>
-          </figure>
+              <blockquote className="-mt-3 flex-1 text-[15px] leading-relaxed text-ink">
+                {t.quote}
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-ink/10 pt-5">
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-clay to-gold text-sm font-bold text-paper">
+                  {t.initials}
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-ink">{t.clientType}</span>
+                  <span className="block text-xs text-ink-soft">{t.location}</span>
+                </span>
+              </figcaption>
+            </figure>
+          </Reveal>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }

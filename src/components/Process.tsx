@@ -1,4 +1,5 @@
 import { Icon, type IconName } from './icons'
+import { Reveal, Section, SectionHeading } from './ui'
 
 interface Step {
   icon: IconName
@@ -35,42 +36,39 @@ const steps: Step[] = [
 
 export function Process() {
   return (
-    <section id="process" className="container-page py-16 lg:py-24">
-      <div className="max-w-2xl">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-clay-dark">
-          How it works
-        </p>
-        <h2 className="text-3xl font-semibold sm:text-4xl">
-          Four steps. One relationship, start to claim.
-        </h2>
-      </div>
+    <Section id="process" tone="mist" as="div">
+      <SectionHeading
+        eyebrow="How it works"
+        title="Four steps. One relationship, start to claim."
+        description="A calm, human process — built so you always know the next move and who is handling it."
+      />
 
       <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {steps.map((s, i) => (
-          <li key={s.title} className="relative">
-            <div className="flex items-center gap-3">
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-paper">
-                <Icon name={s.icon} size={22} />
-              </span>
-              <span className="font-display text-3xl font-semibold text-clay">
-                {String(i + 1).padStart(2, '0')}
-              </span>
+          <Reveal as="li" key={s.title} delay={i * 0.08} className="relative">
+            <div className="flex h-full flex-col rounded-blob border border-ink/10 bg-paper p-6 shadow-card">
+              <div className="flex items-center justify-between">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-paper">
+                  <Icon name={s.icon} size={22} />
+                </span>
+                <span className="font-display text-4xl font-semibold text-clay/30">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-ink">{s.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.detail}</p>
             </div>
-            <h3 className="mt-4 text-lg font-semibold">{s.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-              {s.detail}
-            </p>
             {i < steps.length - 1 && (
               <span
                 aria-hidden="true"
-                className="absolute right-[-0.75rem] top-6 hidden text-clay lg:block"
+                className="absolute -right-3 top-1/2 hidden -translate-y-1/2 text-clay/40 lg:block"
               >
                 <Icon name="arrow" size={20} />
               </span>
             )}
-          </li>
+          </Reveal>
         ))}
       </ol>
-    </section>
+    </Section>
   )
 }

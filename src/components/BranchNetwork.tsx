@@ -1,93 +1,205 @@
-import { branches, hq } from '../data/branches'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { branches } from '../data/branches'
 import { Icon } from './icons'
+import { Reveal, Section, SectionHeading, cx } from './ui'
 
-const stateOrder: Record<string, number> = {
-  Jharkhand: 0,
-  Bihar: 1,
-  'Uttar Pradesh': 2,
-}
+const lines: Array<[string, string]> = [
+  ['ranchi-hq', 'lalpur'],
+  ['ranchi-hq', 'ramgarh'],
+  ['ranchi-hq', 'hazaribagh'],
+  ['ranchi-hq', 'dhanbad'],
+  ['ranchi-hq', 'jamshedpur'],
+  ['ranchi-hq', 'patna'],
+  ['patna', 'biharsharif'],
+  ['ramgarh', 'hazaribagh'],
+  ['hazaribagh', 'giridih'],
+  ['giridih', 'dhanbad'],
+  ['dhanbad', 'jamshedpur'],
+  ['ranchi-hq', 'noida'],
+]
 
 export function BranchNetwork() {
-  const others = [...branches]
-    .filter((b) => !b.hq)
-    .sort((a, b) => stateOrder[a.state] - stateOrder[b.state])
+  const [selectedId, setSelectedId] = useState('ranchi-hq')
+  const selected = branches.find((b) => b.id === selectedId) ?? branches[0]
+  const coord = (id: string) => branches.find((b) => b.id === id)!.map
 
   return (
-    <section id="branches" className="bg-sand/60">
-      <div className="container-page py-16 lg:py-24">
-        <div className="max-w-2xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-clay-dark">
-            The Adda network
-          </p>
-          <h2 className="text-3xl font-semibold sm:text-4xl">
-            Ten real desks. Walk in, don&apos;t wait on hold.
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-ink-soft">
-            Headquartered at Plaza Chowk, Ranchi since 2018, with branches across
-            Jharkhand, Bihar and Noida. Every location is a place you can sit
-            down with a consultant.
-          </p>
-        </div>
+    <Section id="branches" as="div">
+      <SectionHeading
+        eyebrow="The Adda network"
+        title="Ten real desks. Tap one to visit."
+        description="Headquartered at Plaza Chowk, Ranchi since 2018, with branches across Jharkhand, Bihar and Noida. Every location is a place you can sit down with a consultant."
+      />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-          <article className="rounded-blob border-2 border-clay bg-paper p-6 shadow-lift sm:p-8">
-            <div className="flex items-center gap-2 text-clay-dark">
-              <Icon name="pin" size={18} />
-              <span className="text-sm font-semibold uppercase tracking-wide">
-                Headquarters
+      <div className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+        {/* Interactive map */}
+        <Reveal className="relative">
+          <div className="map-grid relative aspect-[5/4] w-full overflow-hidden rounded-blob border border-ink/10 bg-sand/60 shadow-card sm:aspect-[16/10]">
+            <div className="aura pointer-events-none absolute inset-0" aria-hidden="true" />
+
+            <svg
+              className="pointer-events-none absolute inset-0 h-full w-full"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              {lines.map(([a, b], i) => (
+                <motion.line
+                  key={i}
+                  x1={coord(a).x}
+                  y1={coord(a).y}
+                  x2={coord(b).x}
+                  y2={coord(b).y}
+                  stroke="currentColor"
+                  className="text-clay/30"
+                  strokeWidth={0.35}
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 1 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 1, delay: i * 0.06, ease: 'easeInOut' }}
+                />
+              ))}
+            </svg>
+
+            {branches.map((b) => {
+              const isHq = !!b.hq
+              const isSel = b.id === selectedId
+              return (
+                <button
+                  key={b.id}
+                  type="button"
+                  onClick={() => setSelectedId(b.id)}
+                  aria-pressed={isSel}
+                  aria-label={`Select ${b.city}${isHq ? ' headquarters' : ''} branch`}
+                  className={cx(
+                    'group absolute -translate-x-1/2 -translate-y-1/2 focus:outline-none',
+                    b.pos,
+                  )}
+                >
+                  {isHq && (
+                    <span className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-clay/30 animate-pulse-soft" aria-hidden="true" />
+                  )}
+                  <span
+                    className={cx(
+                      'relative block rounded-full transition-all duration-300',
+                      isHq ? 'h-4 w-4 bg-clay ring-4 ring-clay/25' : 'h-3 w-3 bg-ink/70 ring-2 ring-paper',
+                      isSel && !isHq && 'bg-clay ring-4 ring-clay/25 scale-125',
+                      'group-hover:scale-125',
+                    )}
+                  />
+                  {(isHq || isSel) && (
+                    <span
+                      className={cx(
+                        'absolute left-1/2 top-full mt-1.5 -translate-x-1/2 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-semibold shadow-sm',
+                        isHq ? 'bg-clay text-paper' : 'bg-ink text-paper',
+                      )}
+                    >
+                      {b.city}
+                      {isHq && ' · HQ'}
+                    </span>
+                  )}
+                </button>
+              )
+            })}
+
+            <span className="absolute bottom-4 left-4 flex items-center gap-3 text-xs font-medium text-ink-soft">
+              <span className="flex items-center gap-1.5">
+                <span className="h-3 w-3 rounded-full bg-clay ring-4 ring-clay/25" /> HQ
               </span>
+              <span className="flex items-center gap-1.5">
+                <span className="h-3 w-3 rounded-full bg-ink/70 ring-2 ring-paper" /> Branch
+              </span>
+            </span>
+          </div>
+        </Reveal>
+
+        {/* Detail panel */}
+        <Reveal delay={0.1}>
+          <div
+            className="flex h-full flex-col rounded-blob border border-ink/10 bg-paper p-6 shadow-card sm:p-7"
+            aria-live="polite"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h3 className="font-display text-2xl font-semibold text-ink">{selected.city}</h3>
+                <p className="mt-0.5 text-sm font-medium text-ink-soft">{selected.state}</p>
+              </div>
+              {selected.hq && (
+                <span className="rounded-full bg-clay px-3 py-1 text-xs font-semibold text-paper">
+                  Headquarters
+                </span>
+              )}
             </div>
-            <h3 className="mt-2 font-display text-2xl font-semibold">
-              {hq.city}
-            </h3>
-            <p className="mt-2 text-sm font-medium text-ink-soft">{hq.state}</p>
-            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              {hq.address}
+
+            <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-ink-soft">
+              <Icon name="pin" size={16} className="mt-0.5 shrink-0 text-clay" />
+              {selected.address}
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
+
+            <div className="mt-5">
+              <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft/80">
+                Services
+              </p>
+              <ul className="mt-2 grid gap-1.5 sm:grid-cols-2">
+                {selected.services.map((s) => (
+                  <li key={s} className="flex items-start gap-2 text-sm text-ink-soft">
+                    <Icon name="check" size={15} className="mt-0.5 shrink-0 text-pine" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-3 border-t border-ink/10 pt-5">
               <a
                 href="tel:+917677888748"
-                className="inline-flex items-center gap-2 rounded-full bg-clay px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-clay-dark"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-clay"
               >
                 <Icon name="phone" size={16} />
-                +91 76778 88748
+                Call / WhatsApp
               </a>
-              <a
-                href="mailto:info@policyadda.co.in"
-                className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-sand"
-              >
-                info@policyadda.co.in
-              </a>
-            </div>
-          </article>
-
-          <div className="rounded-blob border border-ink/10 bg-paper p-6 shadow-card sm:p-8">
-            <h3 className="font-display text-xl font-semibold">
-              Other branches
-            </h3>
-            <ul className="mt-4 divide-y divide-ink/10">
-              {others.map((b) => (
-                <li
-                  key={b.id}
-                  className="flex items-center justify-between gap-3 py-3"
+              {selected.hq && (
+                <a
+                  href="mailto:info@policyadda.co.in"
+                  className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-sand"
                 >
-                  <span className="flex items-center gap-2.5">
-                    <Icon
-                      name="pin"
-                      size={16}
-                      className="shrink-0 text-clay"
-                    />
-                    <span className="font-medium">{b.city}</span>
-                  </span>
-                  <span className="text-xs font-medium uppercase tracking-wide text-ink-soft">
-                    {b.state}
-                  </span>
-                </li>
-              ))}
-            </ul>
+                  info@policyadda.co.in
+                </a>
+              )}
+              <span className="inline-flex items-center gap-2 rounded-full bg-sand px-4 py-2.5 text-sm font-medium text-ink-soft">
+                <Icon name="spark" size={16} className="text-clay" />
+                {selected.hours}
+              </span>
+            </div>
+
+            <div className="mt-5 border-t border-ink/10 pt-4">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-soft/80">
+                All branches
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {branches.map((b) => (
+                  <button
+                    key={b.id}
+                    type="button"
+                    onClick={() => setSelectedId(b.id)}
+                    aria-pressed={b.id === selectedId}
+                    className={cx(
+                      'rounded-full border px-3 py-1.5 text-xs font-medium transition-colors',
+                      b.id === selectedId
+                        ? 'border-clay bg-clay text-paper'
+                        : 'border-ink/15 text-ink-soft hover:border-clay/40 hover:text-clay-dark',
+                    )}
+                  >
+                    {b.city}
+                    {b.hq && ' · HQ'}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
-    </section>
+    </Section>
   )
 }

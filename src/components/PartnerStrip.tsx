@@ -1,30 +1,30 @@
 import { partners } from '../data/partners'
+import { Reveal } from './ui'
 
 export function PartnerStrip() {
+  const loop = [...partners, ...partners]
   return (
-    <section
-      aria-labelledby="partners-heading"
-      className="border-y border-ink/10 bg-ink py-12 text-paper"
-    >
-      <div className="container-page">
+    <section aria-labelledby="partners-heading" className="overflow-hidden border-y border-ink/10 bg-ink py-12 text-paper">
+      <Reveal className="container-page">
         <h2
           id="partners-heading"
-          className="text-center text-sm font-medium uppercase tracking-wide text-paper/60"
+          className="text-center text-sm font-medium uppercase tracking-[0.18em] text-paper/60"
         >
           Backed by 20+ insurer partners — we compare, you choose
         </h2>
-        <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
-          {partners.map((p) => (
+      </Reveal>
+
+      <div className="mask-fade-x relative mt-8 flex overflow-hidden">
+        <ul className="flex shrink-0 animate-marquee items-center gap-3 pr-3">
+          {loop.map((p, i) => (
             <li
-              key={p}
-              className="rounded-full border border-paper/15 bg-paper/[0.04] px-4 py-2 text-sm font-medium text-paper/85"
+              key={`${p}-${i}`}
+              className="whitespace-nowrap rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-paper/85"
+              aria-hidden={i >= partners.length}
             >
               {p}
             </li>
           ))}
-          <li className="rounded-full bg-ocher px-4 py-2 text-sm font-semibold text-ink">
-            + 6 more
-          </li>
         </ul>
       </div>
     </section>
