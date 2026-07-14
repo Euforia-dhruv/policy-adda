@@ -46,22 +46,22 @@ export function Process() {
       <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {steps.map((s, i) => (
           <Reveal as="li" key={s.title} delay={i * 0.08} className="relative">
-              <div className="card-material flex h-full flex-col rounded-blob p-6 shadow-emboss">
+              <div className="card-material flex h-full flex-col rounded-xl p-6 shadow-emboss">
               <div className="flex items-center justify-between">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-paper">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-elevated text-ivory">
                   <Icon name={s.icon} size={22} />
                 </span>
-                <span className="font-display text-4xl font-semibold text-clay/30">
+                <span className="font-display text-4xl font-medium text-cobalt/30">
                   {String(i + 1).padStart(2, '0')}
                 </span>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-ink">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.detail}</p>
+              <h3 className="mt-4 text-lg font-medium text-ivory">{s.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ash">{s.detail}</p>
             </div>
             {i < steps.length - 1 && (
               <span
                 aria-hidden="true"
-                className="absolute -right-3 top-1/2 hidden -translate-y-1/2 text-clay/40 lg:block"
+                className="absolute -right-3 top-1/2 hidden -translate-y-1/2 text-cobalt/40 lg:block"
               >
                 <Icon name="arrow" size={20} />
               </span>

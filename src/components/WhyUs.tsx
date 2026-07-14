@@ -42,15 +42,15 @@ export function WhyUs() {
       <div className="mt-12 grid gap-6 md:grid-cols-3">
         {pillars.map((p, i) => (
           <Reveal key={p.title} delay={i * 0.08}>
-            <article className="group flex h-full flex-col rounded-blob border border-white/10 bg-white/[0.04] p-7 transition-colors duration-500 hover:bg-white/[0.07]">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-clay text-paper shadow-soft">
+            <article className="group flex h-full flex-col rounded-xl border border-white/10 bg-white/[0.04] p-7 transition-colors duration-500 hover:bg-white/[0.07]">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-cobalt text-ivory shadow-soft">
                 <Icon name={p.icon} size={22} />
               </span>
-              <h3 className="mt-5 text-xl font-semibold text-paper">{p.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-paper/70">
+              <h3 className="mt-5 text-xl font-medium text-ivory">{p.title}</h3>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-ivory/70">
                 {p.body}
               </p>
-              <p className="mt-5 border-t border-white/10 pt-4 text-xs leading-relaxed text-paper/55">
+              <p className="mt-5 border-t border-white/10 pt-4 text-xs leading-relaxed text-ivory/55">
                 {p.verse}
               </p>
             </article>

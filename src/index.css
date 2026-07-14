@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   html {
@@ -27,7 +27,7 @@
   }
 
   body {
-    @apply bg-paper text-ink font-sans antialiased;
+    @apply bg-canvas text-ivory font-sans antialiased;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
@@ -40,39 +40,39 @@
     text-wrap: balance;
   }
 
-  /* Page-wide grain for tactile paper texture */
+  /* Subtle film grain for tactile depth on the dark canvas */
   body::after {
     content: '';
     position: fixed;
     inset: 0;
     z-index: 2;
     pointer-events: none;
-    opacity: 0.035;
-    mix-blend-mode: multiply;
+    opacity: 0.04;
+    mix-blend-mode: soft-light;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   ::selection {
-    background-color: theme('colors.clay.DEFAULT');
-    color: theme('colors.paper');
+    background-color: theme('colors.cobalt.DEFAULT');
+    color: theme('colors.white');
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-clay ring-offset-2 ring-offset-paper;
+    @apply outline-none ring-2 ring-cobalt ring-offset-2 ring-offset-canvas;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: theme('colors.clay.light') transparent;
+    scrollbar-color: rgba(237, 237, 243, 0.25) transparent;
   }
   *::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   *::-webkit-scrollbar-thumb {
-    background: theme('colors.clay.light');
+    background: rgba(237, 237, 243, 0.22);
     border-radius: 9999px;
-    border: 3px solid theme('colors.paper');
+    border: 3px solid theme('colors.canvas');
   }
 }
 
@@ -81,96 +81,92 @@
     @apply mx-auto w-full max-w-shell px-5 sm:px-6 lg:px-10;
   }
 
-  /* ---- Glass ---- */
+  /* ---- Frosted glass (used for sticky/nav overlays) ---- */
   .glass {
-    @apply border border-white/55 bg-white/45 shadow-emboss backdrop-blur-xl;
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
   }
   .glass-strong {
-    @apply border border-white/70 bg-white/55 shadow-lift backdrop-blur-2xl;
+    @apply border border-white/10 bg-white/[0.06] backdrop-blur-2xl;
   }
 
-  /* ---- Physical material surfaces ---- */
+  /* ---- Flat material surfaces (value-contrast, no shadows) ---- */
   .material-paper {
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0) 32%),
-      linear-gradient(180deg, #fdfbf7, #f3ebdb);
+      radial-gradient(130% 120% at 14% 0%, rgba(255, 255, 255, 0.04), transparent 46%),
+      linear-gradient(155deg, #232331, #1a1a26);
   }
   .material-leather {
     background:
-      radial-gradient(130% 120% at 14% 0%, rgba(255, 255, 255, 0.12), transparent 46%),
-      linear-gradient(155deg, #6e5440, #453322);
+      radial-gradient(130% 120% at 14% 0%, rgba(255, 255, 255, 0.05), transparent 46%),
+      linear-gradient(155deg, #2a2533, #1c1822);
   }
   .material-aluminium {
     background:
-      repeating-linear-gradient(96deg, rgba(255, 255, 255, 0.07) 0 1px, rgba(0, 0, 0, 0.035) 1px 2px),
-      linear-gradient(180deg, #efeae2, #d7cfc3);
+      repeating-linear-gradient(96deg, rgba(255, 255, 255, 0.035) 0 1px, rgba(0, 0, 0, 0.18) 1px 2px),
+      linear-gradient(180deg, #23232f, #1b1b25);
   }
   .material-forest {
     background:
-      radial-gradient(120% 100% at 80% 0%, rgba(255, 255, 255, 0.10), transparent 50%),
-      linear-gradient(155deg, #345747, #20382d);
+      radial-gradient(120% 100% at 80% 0%, rgba(82, 102, 235, 0.14), transparent 55%),
+      linear-gradient(155deg, #20233a, #181a28);
   }
 
-  /* Embossed raised card */
+  /* Embossed card — flat graphite with a hairline edge */
   .card-material {
-    @apply rounded-blob border border-white/60 shadow-emboss;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 30%),
-      linear-gradient(180deg, #fdfbf7, #f1e9d9);
+    @apply rounded-xl border border-white/10;
+    background: linear-gradient(180deg, #23232f, #1b1b25);
   }
   .card-raised {
-    @apply rounded-blob border border-white/70 shadow-contact;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 26%),
-      linear-gradient(180deg, #fefdfb, #f3ebdb);
+    @apply rounded-xl border border-white/10;
+    background: linear-gradient(180deg, #262633, #1d1d29);
   }
 
   /* Inset input well */
   .inset-input {
-    @apply rounded-xl border border-ink/10 bg-sand/70 text-ink shadow-inset;
+    @apply rounded-full border border-white/10 bg-elevated text-ivory;
   }
   .inset-input:focus {
-    @apply border-clay bg-paper;
+    @apply border-cobalt bg-elevated;
   }
 
   .aura {
     background:
-      radial-gradient(60% 55% at 82% 6%, rgba(196, 154, 94, 0.26), transparent 60%),
-      radial-gradient(55% 50% at 4% 0%, rgba(178, 106, 62, 0.16), transparent 55%),
-      radial-gradient(45% 45% at 50% 120%, rgba(44, 74, 59, 0.12), transparent 60%);
+      radial-gradient(60% 55% at 82% 6%, rgba(82, 102, 235, 0.16), transparent 60%),
+      radial-gradient(55% 50% at 4% 0%, rgba(82, 102, 235, 0.10), transparent 55%),
+      radial-gradient(45% 45% at 50% 120%, rgba(82, 102, 235, 0.08), transparent 60%);
   }
   .aura-dark {
     background:
-      radial-gradient(50% 60% at 85% 0%, rgba(196, 154, 94, 0.22), transparent 60%),
-      radial-gradient(60% 70% at 0% 100%, rgba(178, 106, 62, 0.18), transparent 60%);
+      radial-gradient(50% 60% at 85% 0%, rgba(82, 102, 235, 0.20), transparent 60%),
+      radial-gradient(60% 70% at 0% 100%, rgba(82, 102, 235, 0.12), transparent 60%);
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-clay-dark;
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-cobalt;
   }
 
   .text-gradient {
-    @apply bg-gradient-to-br from-clay via-clay to-gold bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-cobalt via-cobalt to-cobalt/70 bg-clip-text text-transparent;
   }
 
   .card-hover {
-    @apply transition-[transform,box-shadow] duration-500 ease-out;
+    @apply transition-[transform,background-color] duration-500 ease-out;
   }
   .card-hover:hover {
-    @apply -translate-y-1.5 shadow-contact;
+    @apply -translate-y-1.5 bg-white/[0.06];
   }
 
   .map-grid {
-    background-image: radial-gradient(rgba(33, 28, 24, 0.08) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(rgba(237, 237, 243, 0.07) 1.2px, transparent 1.2px);
     background-size: 20px 20px;
   }
 
   .availability-dot {
-    @apply inline-block h-2.5 w-2.5 rounded-full bg-pine animate-availability;
+    @apply inline-block h-2.5 w-2.5 rounded-full bg-cobalt animate-availability;
   }
 
   .divider {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-ink/10 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
   }
 }
 

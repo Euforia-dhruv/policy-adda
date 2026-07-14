@@ -16,7 +16,7 @@ function Label({ htmlFor, children }: { htmlFor: string; children: ReactNode }) 
   return (
     <label
       htmlFor={htmlFor}
-      className="pointer-events-none absolute left-4 top-4 text-sm text-ink-soft transition-all duration-200 peer-focus:top-2 peer-focus:text-xs peer-focus:font-semibold peer-focus:text-clay-dark peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-xs"
+      className="pointer-events-none absolute left-4 top-4 text-sm text-ash transition-all duration-200 peer-focus:top-2 peer-focus:text-xs peer-focus:font-medium peer-focus:text-cobalt peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-xs"
     >
       {children}
     </label>
@@ -67,7 +67,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
   }
 
   const fieldBase =
-    'peer inset-input w-full rounded-xl px-4 pb-2 pt-5 text-sm text-ink placeholder-transparent transition-colors'
+    'peer inset-input w-full rounded-xl px-4 pb-2 pt-5 text-sm text-ivory placeholder-transparent transition-colors'
 
   return (
     <form
@@ -77,12 +77,12 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
       className={`card-raised ${compact ? 'p-6' : 'p-6 sm:p-7'}`}
     >
       <div className="mb-5 flex items-center gap-3">
-        <span className="grid h-10 w-10 place-items-center rounded-xl bg-clay text-paper shadow-soft">
+        <span className="grid h-10 w-10 place-items-center rounded-xl bg-cobalt text-ivory shadow-soft">
           <Icon name="spark" size={20} />
         </span>
         <div>
-          <p className="font-display text-xl font-semibold leading-none">Get a free quote</p>
-          <p className="mt-1 text-xs text-ink-soft">No pressure. No spam. One working day.</p>
+          <p className="font-display text-xl font-medium leading-none">Get a free quote</p>
+          <p className="mt-1 text-xs text-ash">No pressure. No spam. One working day.</p>
         </div>
       </div>
 
@@ -95,7 +95,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
               onChange={(e) => update('product', e.target.value)}
               aria-invalid={!!errors.product}
               aria-describedby={errors.product ? `${baseId}-product-err` : undefined}
-              className={`${fieldBase} appearance-none ${errors.product ? 'border-clay-dark' : ''}`}
+              className={`${fieldBase} appearance-none ${errors.product ? 'border-cobalt-dark' : ''}`}
             >
               <option value="" disabled hidden></option>
               <option value="">Select insurance or loan…</option>
@@ -105,7 +105,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
                 </option>
               ))}
             </select>
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-ink-soft">
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-ash">
               <Icon name="arrow" size={16} className="rotate-90" />
             </span>
             <Label htmlFor={`${baseId}-product`}>
@@ -113,7 +113,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
             </Label>
           </div>
           {errors.product && (
-            <p id={`${baseId}-product-err`} className="mt-1 px-1 text-xs text-clay-dark">
+            <p id={`${baseId}-product-err`} className="mt-1 px-1 text-xs text-cobalt">
               {errors.product}
             </p>
           )}
@@ -131,12 +131,12 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
                 placeholder=" "
                 aria-invalid={!!errors.name}
                 aria-describedby={errors.name ? `${baseId}-name-err` : undefined}
-                className={`${fieldBase} ${errors.name ? 'border-clay-dark' : ''}`}
+                className={`${fieldBase} ${errors.name ? 'border-cobalt-dark' : ''}`}
               />
               <Label htmlFor={`${baseId}-name`}>Your name</Label>
             </div>
             {errors.name && (
-              <p id={`${baseId}-name-err`} className="mt-1 px-1 text-xs text-clay-dark">
+              <p id={`${baseId}-name-err`} className="mt-1 px-1 text-xs text-cobalt">
                 {errors.name}
               </p>
             )}
@@ -154,12 +154,12 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
                 placeholder=" "
                 aria-invalid={!!errors.mobile}
                 aria-describedby={errors.mobile ? `${baseId}-mobile-err` : undefined}
-                className={`${fieldBase} ${errors.mobile ? 'border-clay-dark' : ''}`}
+                className={`${fieldBase} ${errors.mobile ? 'border-cobalt-dark' : ''}`}
               />
               <Label htmlFor={`${baseId}-mobile`}>Mobile number</Label>
             </div>
             {errors.mobile && (
-              <p id={`${baseId}-mobile-err`} className="mt-1 px-1 text-xs text-clay-dark">
+              <p id={`${baseId}-mobile-err`} className="mt-1 px-1 text-xs text-cobalt">
                 {errors.mobile}
               </p>
             )}
@@ -174,7 +174,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
               onChange={(e) => update('branch', e.target.value)}
               aria-invalid={!!errors.branch}
               aria-describedby={errors.branch ? `${baseId}-branch-err` : undefined}
-              className={`${fieldBase} appearance-none ${errors.branch ? 'border-clay-dark' : ''}`}
+              className={`${fieldBase} appearance-none ${errors.branch ? 'border-cobalt-dark' : ''}`}
             >
               <option value="" disabled hidden></option>
               <option value="">Select a branch…</option>
@@ -185,7 +185,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
                 </option>
               ))}
             </select>
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-ink-soft">
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-ash">
               <Icon name="arrow" size={16} className="rotate-90" />
             </span>
             <Label htmlFor={`${baseId}-branch`}>
@@ -193,7 +193,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
             </Label>
           </div>
           {errors.branch && (
-            <p id={`${baseId}-branch-err`} className="mt-1 px-1 text-xs text-clay-dark">
+            <p id={`${baseId}-branch-err`} className="mt-1 px-1 text-xs text-cobalt">
               {errors.branch}
             </p>
           )}
@@ -202,8 +202,8 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
         <Button type="submit" icon="arrow" className="mt-1 w-full">
           Request my quote
         </Button>
-        <p className="flex items-center justify-center gap-2 text-center text-xs text-ink-soft">
-          <Icon name="check" size={14} className="text-pine" />
+        <p className="flex items-center justify-center gap-2 text-center text-xs text-ash">
+          <Icon name="check" size={14} className="text-ivory" />
           We call back within one working day. No auto-dialers.
         </p>
       </div>

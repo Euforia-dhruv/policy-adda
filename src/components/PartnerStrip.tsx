@@ -4,11 +4,11 @@ import { Reveal } from './ui'
 export function PartnerStrip() {
   const loop = [...partners, ...partners]
   return (
-    <section aria-labelledby="partners-heading" className="overflow-hidden border-y border-ink/10 bg-ink py-12 text-paper">
+    <section aria-labelledby="partners-heading" className="overflow-hidden border-y border-white/10 bg-elevated py-12 text-ivory">
       <Reveal className="container-page">
         <h2
           id="partners-heading"
-          className="text-center text-sm font-medium uppercase tracking-[0.18em] text-paper/60"
+          className="text-center text-sm font-medium uppercase tracking-[0.18em] text-ivory/60"
         >
           Backed by 20+ insurer partners — we compare, you choose
         </h2>
@@ -19,7 +19,7 @@ export function PartnerStrip() {
           {loop.map((p, i) => (
             <li
               key={`${p}-${i}`}
-              className="whitespace-nowrap rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-paper/85"
+              className="whitespace-nowrap rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-ivory/85"
               aria-hidden={i >= partners.length}
             >
               {p}

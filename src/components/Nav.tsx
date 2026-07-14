@@ -36,8 +36,8 @@ export function Nav() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-ink/10 bg-paper/80 backdrop-blur-xl'
-          : 'border-b border-transparent bg-paper/40 backdrop-blur-sm'
+          ? 'border-b border-white/10 bg-surface/80 backdrop-blur-xl'
+          : 'border-b border-transparent bg-surface/40 backdrop-blur-sm'
       }`}
     >
       <nav className="container-page flex h-16 items-center justify-between gap-4 lg:h-20" aria-label="Primary">
@@ -50,10 +50,10 @@ export function Nav() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="group relative rounded text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+                className="group relative rounded text-sm font-medium text-ash transition-colors hover:text-ivory"
               >
                 {l.label}
-                <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-clay transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-cobalt transition-all duration-300 group-hover:w-full" />
               </a>
             </li>
           ))}
@@ -62,7 +62,7 @@ export function Nav() {
         <div className="flex items-center gap-2">
           <a
             href="tel:+917677888748"
-            className="hidden items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-clay sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-elevated px-4 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-cobalt sm:inline-flex"
           >
             <Icon name="phone" size={16} />
             +91 76778 88748
@@ -70,7 +70,7 @@ export function Nav() {
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-ink/15 text-ink lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 text-ivory lg:hidden"
             aria-expanded={open}
             aria-controls={panelId}
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -105,7 +105,7 @@ export function Nav() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-ink/10 bg-paper/95 backdrop-blur-xl lg:hidden"
+            className="overflow-hidden border-t border-white/10 bg-surface/95 backdrop-blur-xl lg:hidden"
           >
             <ul className="container-page flex flex-col gap-1 py-4">
               {links.map((l) => (
@@ -113,7 +113,7 @@ export function Nav() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-xl px-4 py-3 text-base font-medium text-ink hover:bg-sand"
+                    className="block rounded-xl px-4 py-3 text-base font-medium text-ivory hover:bg-surface"
                   >
                     {l.label}
                   </a>
@@ -123,7 +123,7 @@ export function Nav() {
                 <a
                   href="tel:+917677888748"
                   onClick={() => setOpen(false)}
-                  className="mt-1 flex items-center gap-2 rounded-xl bg-ink px-4 py-3 text-base font-semibold text-paper"
+                  className="mt-1 flex items-center gap-2 rounded-xl bg-elevated px-4 py-3 text-base font-medium text-ivory"
                 >
                   <Icon name="phone" size={18} />
                   +91 76778 88748

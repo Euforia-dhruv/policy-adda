@@ -42,10 +42,10 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         {toasts.map((t) => (
           <div
             key={t.id}
-            className="pointer-events-auto flex max-w-md items-start gap-3 rounded-2xl bg-ink px-4 py-3 text-paper shadow-lift animate-fade-up"
+            className="pointer-events-auto flex max-w-md items-start gap-3 rounded-2xl bg-elevated px-4 py-3 text-ivory shadow-lift animate-fade-up"
             role="status"
           >
-            <span className="mt-0.5 text-clay-light">
+            <span className="mt-0.5 text-cobalt-light">
               <Icon name="check" size={20} />
             </span>
             <p className="text-sm font-medium leading-snug">{t.message}</p>

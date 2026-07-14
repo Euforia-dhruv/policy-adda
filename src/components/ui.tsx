@@ -74,13 +74,13 @@ export function Section({
   as?: 'section' | 'div'
 }) {
   const tones: Record<string, string> = {
-    paper: 'bg-paper text-ink',
-    sand: 'bg-sand/60 text-ink',
-    mist: 'bg-mist text-ink',
-    ink: 'bg-ink text-paper',
+    paper: 'bg-canvas text-ivory',
+    sand: 'bg-surface text-ivory',
+    mist: 'bg-surface text-ivory',
+    ink: 'bg-elevated text-ivory',
   }
   return (
-    <Tag id={id} className={cx('py-20 lg:py-28', tones[tone], className)}>
+    <Tag id={id} className={cx('py-[72px]', tones[tone], className)}>
       <div className="container-page">{children}</div>
     </Tag>
   )
@@ -101,7 +101,6 @@ export function SectionHeading({
   tone?: 'paper' | 'ink'
   className?: string
 }) {
-  const isInk = tone === 'ink'
   return (
     <Reveal
       className={cx(
@@ -116,19 +115,14 @@ export function SectionHeading({
           {eyebrow}
         </span>
       )}
-      <h2
-        className={cx(
-          'mt-4 text-display-md font-semibold sm:text-display-lg',
-          isInk ? 'text-paper' : 'text-ink',
-        )}
-      >
+      <h2 className="mt-4 text-display-md font-medium text-ivory sm:text-display-lg">
         {title}
       </h2>
       {description && (
         <p
           className={cx(
             'mt-5 text-lg leading-relaxed',
-            isInk ? 'text-paper/75' : 'text-ink-soft',
+            tone === 'ink' ? 'text-ivory/75' : 'text-ash',
           )}
         >
           {description}
@@ -145,10 +139,10 @@ type Variant = 'primary' | 'secondary' | 'ghost' | 'gold'
 type Size = 'sm' | 'md' | 'lg'
 
 const variantClass: Record<Variant, string> = {
-  primary: 'bg-clay text-paper shadow-soft hover:bg-clay-dark',
-  secondary: 'border border-ink/15 bg-paper text-ink hover:bg-sand',
-  ghost: 'text-ink hover:bg-ink/5',
-  gold: 'bg-gold text-ink hover:bg-gold-dark',
+  primary: 'bg-cobalt text-white shadow-soft hover:bg-cobalt-dark',
+  secondary: 'border border-white/15 bg-surface text-ivory hover:bg-white/5',
+  ghost: 'text-ivory hover:bg-white/5',
+  gold: 'bg-cobalt text-white hover:bg-cobalt-dark',
 }
 const sizeClass: Record<Size, string> = {
   sm: 'px-4 py-2 text-sm',
@@ -182,7 +176,7 @@ export function Button({
   ariaLabel,
 }: ButtonProps) {
   const classes = cx(
-    'group inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors duration-300',
+    'group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors duration-300',
     variantClass[variant],
     sizeClass[size],
     className,
@@ -286,7 +280,7 @@ export function ScrollProgress() {
   const { scrollYProgress } = useScroll()
   return (
     <motion.div
-      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-gradient-to-r from-clay via-gold to-clay"
+      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-gradient-to-r from-cobalt via-cobalt/70 to-cobalt"
       style={{ scaleX: scrollYProgress }}
       aria-hidden="true"
     />
@@ -304,7 +298,7 @@ export function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with an advisor on WhatsApp"
-      className="fixed bottom-20 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-pine text-paper shadow-lift sm:h-16 sm:w-16"
+      className="fixed bottom-20 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-elevated text-ivory shadow-lift sm:h-16 sm:w-16"
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.95 }}
       animate={reduce ? undefined : { y: [0, -6, 0] }}
@@ -340,10 +334,10 @@ export function StickyCTA() {
         >
           <div className="container-page">
             <div className="glass flex items-center justify-between gap-4 rounded-full px-4 py-3 sm:px-6">
-              <p className="hidden text-sm font-medium text-ink-soft sm:block">
+              <p className="hidden text-sm font-medium text-ash sm:block">
                 Talk to a real advisor — callback within one working day.
               </p>
-              <p className="text-sm font-medium text-ink-soft sm:hidden">
+              <p className="text-sm font-medium text-ash sm:hidden">
                 Free quote, no spam
               </p>
               <Button href="#contact" size="sm" icon="arrow">
@@ -372,8 +366,8 @@ export function Accordion({
   return (
     <div
       className={cx(
-        'divide-y rounded-blob border',
-        tone === 'ink' ? 'border-white/10 bg-white/[0.03]' : 'border-ink/10 bg-paper',
+        'divide-y rounded-xl border',
+        tone === 'ink' ? 'border-white/10 bg-white/[0.03]' : 'border-white/10 bg-surface',
       )}
     >
       {items.map((item, i) => {
@@ -391,11 +385,11 @@ export function Accordion({
                 onClick={() => setOpen(isOpen ? null : i)}
                 className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-7"
               >
-                <span className="font-display text-lg font-semibold">{item.q}</span>
+                <span className="font-display text-lg font-medium">{item.q}</span>
                 <span
                   className={cx(
                     'grid h-8 w-8 shrink-0 place-items-center rounded-full border transition-transform duration-300',
-                    tone === 'ink' ? 'border-white/20 text-paper' : 'border-ink/15 text-ink',
+                    tone === 'ink' ? 'border-white/20 text-ivory' : 'border-white/15 text-ivory',
                     isOpen && 'rotate-45',
                   )}
                   aria-hidden="true"
@@ -419,7 +413,7 @@ export function Accordion({
                   <p
                     className={cx(
                       'px-5 pb-6 pt-0 text-base leading-relaxed sm:px-7',
-                      tone === 'ink' ? 'text-paper/75' : 'text-ink-soft',
+                      tone === 'ink' ? 'text-ivory/75' : 'text-ash',
                     )}
                   >
                     {item.a}
@@ -440,11 +434,11 @@ export function Accordion({
 export function Logo({ className }: { className?: string }) {
   return (
     <span className={cx('flex items-center gap-2.5', className)}>
-      <span className="grid h-10 w-10 place-items-center rounded-xl bg-clay text-paper shadow-soft">
+      <span className="grid h-10 w-10 place-items-center rounded-xl bg-elevated text-ivory ring-1 ring-white/10">
         <Icon name="chat" size={22} />
       </span>
-      <span className="font-display text-xl font-semibold leading-none">
-        Policy<span className="text-clay">Adda</span>
+      <span className="font-display text-xl font-medium leading-none text-ivory">
+        Policy<span className="text-cobalt">Adda</span>
       </span>
     </span>
   )
@@ -481,8 +475,8 @@ export function CursorGlow() {
         translateX: '-50%',
         translateY: '-50%',
         background:
-          'radial-gradient(circle, rgba(178,106,62,0.14), rgba(196,154,94,0.07) 45%, transparent 70%)',
-        mixBlendMode: 'multiply',
+          'radial-gradient(circle, rgba(82,102,235,0.18), rgba(82,102,235,0.08) 42%, transparent 70%)',
+        mixBlendMode: 'screen',
       }}
     />
   )

@@ -27,7 +27,7 @@ export default function App() {
       <ToastProvider>
         <a
           href="#products"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-elevated focus:px-4 focus:py-2 focus:text-ivory"
         >
           Skip to content
         </a>

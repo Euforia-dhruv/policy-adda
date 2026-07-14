@@ -40,9 +40,9 @@ export function ClaimsExperience() {
           />
           <Reveal delay={0.1}>
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <div className="card-material rounded-blob px-6 py-5 shadow-emboss">
-                <p className="font-display text-4xl font-semibold text-clay">9 days</p>
-                <p className="mt-1 text-xs font-medium text-ink-soft">Typical motor claim turnaround</p>
+              <div className="card-material rounded-xl px-6 py-5 shadow-emboss">
+                <p className="font-display text-4xl font-medium text-cobalt">9 days</p>
+                <p className="mt-1 text-xs font-medium text-ash">Typical motor claim turnaround</p>
               </div>
               <Button href="#contact" icon="arrow">
                 Talk to claims desk
@@ -54,7 +54,7 @@ export function ClaimsExperience() {
         <Reveal delay={0.1}>
           <ol className="relative pl-12">
             <motion.span
-              className="absolute left-[11px] top-3 bottom-3 w-0.5 origin-top rounded-full bg-gradient-to-b from-clay via-gold to-pine"
+              className="absolute left-[11px] top-3 bottom-3 w-0.5 origin-top rounded-full bg-gradient-to-b from-cobalt via-cobalt/60 to-cobalt/20"
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true, margin: '-60px' }}
@@ -63,17 +63,17 @@ export function ClaimsExperience() {
             />
             {steps.map((s, i) => (
               <li key={s.title} className="relative pb-9 last:pb-0">
-                <span className="absolute -left-12 top-0 grid h-6 w-6 place-items-center rounded-full border-2 border-clay bg-paper text-clay shadow-soft">
-                  <span className="h-2 w-2 rounded-full bg-clay" />
+                <span className="absolute -left-12 top-0 grid h-6 w-6 place-items-center rounded-full border-2 border-cobalt bg-surface text-cobalt shadow-soft">
+                  <span className="h-2 w-2 rounded-full bg-cobalt" />
                 </span>
-                <div className="card-material rounded-blob p-5 shadow-emboss transition-transform duration-500 hover:-translate-y-0.5">
+                <div className="card-material rounded-xl p-5 shadow-emboss transition-transform duration-500 hover:-translate-y-0.5">
                   <div className="flex items-center gap-3">
-                    <span className="font-display text-sm font-semibold text-clay-dark">
+                    <span className="font-display text-sm font-medium text-cobalt">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <h3 className="text-lg font-semibold text-ink">{s.title}</h3>
+                    <h3 className="text-lg font-medium text-ivory">{s.title}</h3>
                   </div>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.detail}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ash">{s.detail}</p>
                 </div>
               </li>
             ))}

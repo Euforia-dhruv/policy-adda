@@ -34,17 +34,17 @@ function FloatCard({
 
 function AdvisorCard() {
   return (
-    <div className="material-leather w-56 rounded-2xl p-4 text-paper shadow-contact">
+    <div className="material-leather w-56 rounded-2xl p-4 text-ivory shadow-contact">
       <div className="flex items-center gap-3">
-        <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-clay to-gold text-sm font-bold text-paper shadow-soft">
+        <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-cobalt to-cobalt/70 text-sm font-medium text-ivory shadow-soft">
           PS
         </span>
         <div>
-          <p className="text-sm font-semibold leading-tight">Priya Sinha</p>
-          <p className="text-xs text-paper/70">Senior Advisor</p>
+          <p className="text-sm font-medium leading-tight">Priya Sinha</p>
+          <p className="text-xs text-ivory/70">Senior Advisor</p>
         </div>
       </div>
-      <div className="mt-3 flex items-center gap-2 text-xs text-paper/85">
+      <div className="mt-3 flex items-center gap-2 text-xs text-ivory/85">
         <span className="availability-dot" />
         Online now · Ranchi HQ
       </div>
@@ -54,16 +54,15 @@ function AdvisorCard() {
 
 function PolicyCard() {
   return (
-    <div className="relative w-64 overflow-hidden rounded-2xl bg-gradient-to-br from-clay to-gold p-5 text-paper shadow-contact">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent opacity-60" aria-hidden="true" />
+    <div className="material-aluminium relative w-64 overflow-hidden rounded-2xl p-5 text-ivory">
       <div className="relative">
         <div className="flex items-center justify-between">
-          <span className="font-display text-lg font-semibold">Policy Adda</span>
-          <span className="h-7 w-9 rounded bg-white/30" aria-hidden="true" />
+          <span className="font-display text-lg font-medium">Policy Adda</span>
+          <span className="h-7 w-9 rounded bg-cobalt" aria-hidden="true" />
         </div>
-        <p className="mt-5 text-xs uppercase tracking-wide text-paper/80">Car · Comprehensive</p>
-        <p className="mt-1 font-display text-2xl font-semibold">Zero Dep</p>
-        <p className="mt-3 text-xs text-paper/80">ID PA-4821 · Renews Mar 2026</p>
+        <p className="mt-5 text-xs uppercase tracking-wide text-ash">Car · Comprehensive</p>
+        <p className="mt-1 font-display text-2xl font-medium">Zero Dep</p>
+        <p className="mt-3 text-xs text-ash">ID PA-4821 · Renews Mar 2026</p>
       </div>
     </div>
   )
@@ -73,21 +72,21 @@ function ClaimCard() {
   return (
     <div className="card-material w-60 rounded-2xl p-4 shadow-emboss">
       <div className="flex items-center justify-between">
-        <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">Claim PA-2291</p>
-        <span className="grid h-6 w-6 place-items-center rounded-full bg-pine text-paper">
+        <p className="text-xs font-medium uppercase tracking-wide text-ash">Claim PA-2291</p>
+        <span className="grid h-6 w-6 place-items-center rounded-full bg-elevated text-ivory">
           <Icon name="check" size={14} />
         </span>
       </div>
-      <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-ink/10">
+      <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
         <motion.span
-          className="block h-full rounded-full bg-gradient-to-r from-clay to-gold"
+          className="block h-full rounded-full bg-gradient-to-r from-cobalt to-cobalt/70"
           initial={{ width: 0 }}
           whileInView={{ width: '100%' }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         />
       </div>
-      <p className="mt-2 text-xs font-medium text-pine">Settled · in 9 days</p>
+      <p className="mt-2 text-xs font-medium text-ivory">Settled · in 9 days</p>
     </div>
   )
 }
@@ -95,12 +94,12 @@ function ClaimCard() {
 function BranchCard() {
   return (
     <div className="card-material flex w-48 items-center gap-3 rounded-2xl p-3.5 shadow-emboss">
-      <span className="grid h-9 w-9 place-items-center rounded-xl bg-clay/10 text-clay">
+      <span className="grid h-9 w-9 place-items-center rounded-xl bg-cobalt/10 text-cobalt">
         <Icon name="pin" size={18} />
       </span>
       <div>
-        <p className="text-sm font-semibold text-ink">Ranchi HQ</p>
-        <p className="text-xs text-ink-soft">Open · 10 AM – 7 PM</p>
+        <p className="text-sm font-medium text-ivory">Ranchi HQ</p>
+        <p className="text-xs text-ash">Open · 10 AM – 7 PM</p>
       </div>
     </div>
   )
@@ -108,13 +107,13 @@ function BranchCard() {
 
 function WhatsAppCard() {
   return (
-    <div className="material-forest flex w-52 items-center gap-3 rounded-2xl p-3.5 text-paper shadow-contact">
-      <span className="grid h-9 w-9 place-items-center rounded-full bg-paper/15 text-paper">
+    <div className="material-forest flex w-52 items-center gap-3 rounded-2xl p-3.5 text-ivory shadow-contact">
+      <span className="grid h-9 w-9 place-items-center rounded-full bg-surface/15 text-ivory">
         <Icon name="chat" size={18} />
       </span>
       <div>
-        <p className="text-sm font-semibold text-paper">WhatsApp help</p>
-        <p className="text-xs text-paper/75">Replies in ~4 min</p>
+        <p className="text-sm font-medium text-ivory">WhatsApp help</p>
+        <p className="text-xs text-ivory/75">Replies in ~4 min</p>
       </div>
     </div>
   )
@@ -155,7 +154,7 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft text-pretty">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ash text-pretty">
               Not a marketplace that disappears after checkout. Policy Adda is a
               real relationship — a named advisor, a branch desk near you, and
               someone who stays until your claim is settled.
@@ -175,15 +174,15 @@ export function Hero() {
 
           <Reveal delay={0.2}>
             <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-paper px-3.5 py-1.5 text-sm font-medium text-ink-soft shadow-soft">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-surface px-3.5 py-1.5 text-sm font-medium text-ash shadow-soft">
                 <span className="availability-dot" />
                 Advisors online now
               </span>
-              <span className="flex items-center gap-2 text-sm font-medium text-ink-soft">
-                <Icon name="pin" size={16} className="text-clay" /> Ranchi HQ · since 2018
+              <span className="flex items-center gap-2 text-sm font-medium text-ash">
+                <Icon name="pin" size={16} className="text-cobalt" /> Ranchi HQ · since 2018
               </span>
-              <span className="flex items-center gap-2 text-sm font-medium text-ink-soft">
-                <Icon name="shield" size={16} className="text-pine" /> 20+ partners
+              <span className="flex items-center gap-2 text-sm font-medium text-ash">
+                <Icon name="shield" size={16} className="text-ivory" /> 20+ partners
               </span>
             </div>
           </Reveal>

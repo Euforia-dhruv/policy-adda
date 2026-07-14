@@ -1,4 +1,4 @@
-# Policy Adda — Premium Neo-Skeuomorphic Platform
+# Policy Adda — Alpine Dark (Mercury) Platform
 
 A premium marketing experience for **Policy Adda**, an insurance & loan
 consultancy based in Ranchi, Jharkhand. It positions the brand as the modern,
@@ -6,10 +6,10 @@ relationship-led alternative to national insurance marketplaces — *“Policy A
 Adda Apna.”*
 
 This is a design-led rebuild of the original prototype: same business, same
-real data, but re-architected as a **premium neo-skeuomorphic** brand
-experience — warm ivory/leather/aluminium/glass materials, realistic lighting
-and a consultation-desk hero — benchmarked against Apple, Stripe, Linear, CRED
-and the craft of physical product design, not against PolicyBazaar.
+real data, but re-architected in a **dark, alpine-banking aesthetic** (the
+"Mercury" system) — a near-black onyx canvas, flat graphite cards separated by
+value contrast alone, and a single vivid cobalt as the only chromatic action —
+benchmarked against Mercury, Stripe, Linear, Ramp and Brex, not PolicyBazaar.
 
 ## Stack
 
@@ -47,50 +47,51 @@ HQ at Plaza Chowk, 10 branches, 20+ insurer partners, named advisors, a
 
 Five principles drove every decision:
 
-1. **Material warmth over corporate.** A warm-ivory page, leather and
-   aluminium surfaces, glass cards and copper accents replace generic insurance
-   blue. The brand should feel like a trusted local *adda* (gathering place)
-   rendered with the care of a physical product, not a banking portal.
-2. **Editorial serif, not template.** DM Serif Display paired with Manrope
-   gives the site a magazine-like rhythm and a point of view.
-3. **Calm confidence.** Generous whitespace, clear typographic scale, and
-   restrained, lighting-aware motion. Nothing shouts; the brand whispers and is
-   believed.
+1. **Hushed, premium darkness.** A near-black onyx canvas (`#171721`) sets a
+   cinematic, observatory-like atmosphere. Surfaces float as subtly lighter
+   graphite cards — the opposite of a bright, faceless insurance portal.
+2. **One chromatic note.** The interface is overwhelmingly monochromatic —
+   ivory text on onyx — with a single vivid cobalt (`#5266eb`) reserved
+   exclusively for the primary action. No greens, reds, or oranges.
+3. **Flat, not glossy.** Elevation is communicated through value contrast
+   alone — graphite one step lighter than the canvas — never drop shadows.
+   Pill-shaped controls define structure.
 4. **Relationship made visible.** Advisors have faces, branches have maps,
    claims have a timeline. Trust is shown, not asserted.
-5. **Craft in the details.** Raised/inset material cards, cursor-following
-   light, soft auras, animated counters, scroll reveals, focus rings, a
+5. **Measured craft.** Intermediate-weight display type, cursor-following
+   cobalt light, animated counters, scroll reveals, focus rings, a
    reading-progress bar, a floating WhatsApp helper and a sticky CTA — each
    subtle, each purposeful.
 
 ## Typography
 
-- **Display — DM Serif Display** (400–700). A high-contrast, elegant serif
-  with personality; used for headlines and numbers. Chosen over a cold
-  geometric sans to signal “human, timeless.”
-- **Body — Manrope** (400–800). A modern, friendly, highly legible grotesque;
-  ideal for long-form explanations and UI text.
+- **Display — Archivo** (400–700), a Söhne-Breit-style grotesque used at
+  intermediate weights for all headings. Its wide-set, architectural quality
+  gives display copy presence without shouting.
+- **Body — Inter** (300–700). A modern, highly legible UI grotesque; ideal for
+  navigation, long-form explanations and form controls.
 - **Scale.** Fluid `clamp()` headings (`display-xl` → `display-md`) keep
-  hierarchy intact from 375px to 1920px. Body is 15–18px with 1.6+ line-height
-  and a ~68ch reading measure for paragraphs.
+  hierarchy intact from 375px to 1920px. Body is 16px at 1.5 line-height with a
+  ~68ch reading measure. Weights stay measured — never bold (700+).
 
 ## Color system
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `paper` | `#FBF8F3` | Warm ivory page background |
-| `mist` / `sand` | `#F3ECE2` / `#EFE6D8` | Section surfaces for rhythm |
-| `walnut` | `#5A4636` | Warm wood/leather tone |
-| `ink` | `#1B1714` | Near-black warm text |
-| `clay` / `copper` | `#B26A3E` | Primary “copper” accent |
-| `gold` | `#C49A5E` | Warm secondary accent |
-| `forest` / `pine` | `#2C4A3B` | Trust/success (claims, CTA) |
-| `bronze` | `#8A5A33` | Muted support tone |
+| `canvas` | `#171721` | Onyx page background, hero overlay, footer |
+| `surface` | `#1e1e2a` | Graphite card & section surface (one step lighter) |
+| `elevated` | `#272735` | Obsidian interactive surface — secondary fills |
+| `slate` | `#70707d` | Medium-weight structural dividers |
+| `mist` | `#e2e3ed` | Light hairline borders, input edges |
+| `ash` | `#c3c3cc` | Muted body copy, helper text, secondary labels |
+| `ivory` | `#ededf3` | Primary text, icons, nav, ghost-button strokes |
+| `cobalt` | `#5266eb` | The single chromatic action — primary buttons only |
+| `white` | `#ffffff` | Text/icon fill on cobalt buttons only |
 
-All text/background pairings meet WCAG AA; small text uses `ink-soft` for
-sufficient contrast. Material surfaces (`card-raised`, `card-material`,
-`material-leather`, `material-aluminium`, `material-forest`, `glass-strong`)
-carry layered contact/emboss shadows for the neo-skeuomorphic feel.
+Elevation is flat: separation comes from the graphite-on-onyx value step, not
+shadows. Surfaces (`card-material`, `card-raised`, `material-leather`,
+`material-aluminium`, `material-forest`, `glass`) are dark, hairline-bordered
+graphite. Body text is always ivory — never pure white — on the dark canvas.
 
 ## Motion principles
 

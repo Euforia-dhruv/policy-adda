@@ -21,37 +21,37 @@ export function ProductGrid() {
       <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {products.map((p, i) => (
           <Reveal as="li" key={p.id} delay={Math.min(i * 0.05, 0.3)}>
-            <article className="card-hover group flex h-full flex-col rounded-blob border border-white/60 bg-paper p-6 shadow-emboss hover:shadow-contact">
+            <article className="card-hover group flex h-full flex-col rounded-xl border border-white/60 bg-surface p-6 shadow-emboss hover:shadow-contact">
               <div className="flex items-start justify-between">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-clay/15 to-gold/15 text-clay transition-colors duration-500 group-hover:bg-clay group-hover:text-paper">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-cobalt/15 to-cobalt/10 text-cobalt transition-colors duration-500 group-hover:bg-cobalt group-hover:text-ivory">
                   <Icon name={p.icon} size={24} />
                 </span>
-                <span className="translate-y-1 text-clay opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">
+                <span className="translate-y-1 text-cobalt opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">
                   <Icon name="arrow" size={18} />
                 </span>
               </div>
 
-              <h3 className="mt-4 text-lg font-semibold text-ink">{p.name}</h3>
-              <p className="mt-1 text-sm font-medium text-clay-dark">{p.tagline}</p>
-              <p className="mt-3 text-sm leading-relaxed text-ink-soft">{p.description}</p>
+              <h3 className="mt-4 text-lg font-medium text-ivory">{p.name}</h3>
+              <p className="mt-1 text-sm font-medium text-cobalt">{p.tagline}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ash">{p.description}</p>
 
               <ul className="mt-4 space-y-2">
                 {p.benefits.map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-sm text-ink-soft">
-                    <Icon name="check" size={16} className="mt-0.5 shrink-0 text-pine" />
+                  <li key={b} className="flex items-start gap-2 text-sm text-ash">
+                    <Icon name="check" size={16} className="mt-0.5 shrink-0 text-ivory" />
                     {b}
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-5 flex items-center justify-between gap-3 border-t border-ink/10 pt-4">
-                <span className="text-xs font-medium uppercase tracking-wide text-ink-soft/80">
+              <div className="mt-5 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
+                <span className="text-xs font-medium uppercase tracking-wide text-ash/80">
                   Best for: {p.who}
                 </span>
                 <a
                   href="#contact"
                   className={cx(
-                    'inline-flex items-center gap-1 text-sm font-semibold text-clay transition-colors hover:text-clay-dark',
+                    'inline-flex items-center gap-1 text-sm font-medium text-cobalt transition-colors hover:text-cobalt',
                   )}
                 >
                   Learn more

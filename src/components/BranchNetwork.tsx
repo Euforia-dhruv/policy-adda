@@ -35,7 +35,7 @@ export function BranchNetwork() {
       <div className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
         {/* Interactive map */}
         <Reveal className="relative">
-          <div className="map-grid relative aspect-[5/4] w-full overflow-hidden rounded-blob border border-ink/10 bg-sand/60 shadow-card sm:aspect-[16/10]">
+          <div className="map-grid relative aspect-[5/4] w-full overflow-hidden rounded-xl border border-white/10 bg-surface/60 shadow-card sm:aspect-[16/10]">
             <div className="aura pointer-events-none absolute inset-0" aria-hidden="true" />
 
             <svg
@@ -52,7 +52,7 @@ export function BranchNetwork() {
                   x2={coord(b).x}
                   y2={coord(b).y}
                   stroke="currentColor"
-                  className="text-clay/30"
+                  className="text-cobalt/30"
                   strokeWidth={0.35}
                   initial={{ pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 1 }}
@@ -78,21 +78,21 @@ export function BranchNetwork() {
                   )}
                 >
                   {isHq && (
-                    <span className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-clay/30 animate-pulse-soft" aria-hidden="true" />
+                    <span className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cobalt/30 animate-pulse-soft" aria-hidden="true" />
                   )}
                   <span
                     className={cx(
                       'relative block rounded-full transition-all duration-300',
-                      isHq ? 'h-4 w-4 bg-clay ring-4 ring-clay/25' : 'h-3 w-3 bg-ink/70 ring-2 ring-paper',
-                      isSel && !isHq && 'bg-clay ring-4 ring-clay/25 scale-125',
+                      isHq ? 'h-4 w-4 bg-cobalt ring-4 ring-cobalt/25' : 'h-3 w-3 bg-white/70 ring-2 ring-ivory',
+                      isSel && !isHq && 'bg-cobalt ring-4 ring-cobalt/25 scale-125',
                       'group-hover:scale-125',
                     )}
                   />
                   {(isHq || isSel) && (
                     <span
                       className={cx(
-                        'absolute left-1/2 top-full mt-1.5 -translate-x-1/2 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-semibold shadow-sm',
-                        isHq ? 'bg-clay text-paper' : 'bg-ink text-paper',
+                        'absolute left-1/2 top-full mt-1.5 -translate-x-1/2 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-medium ',
+                        isHq ? 'bg-cobalt text-ivory' : 'bg-elevated text-ivory',
                       )}
                     >
                       {b.city}
@@ -103,12 +103,12 @@ export function BranchNetwork() {
               )
             })}
 
-            <span className="absolute bottom-4 left-4 flex items-center gap-3 text-xs font-medium text-ink-soft">
+            <span className="absolute bottom-4 left-4 flex items-center gap-3 text-xs font-medium text-ash">
               <span className="flex items-center gap-1.5">
-                <span className="h-3 w-3 rounded-full bg-clay ring-4 ring-clay/25" /> HQ
+                <span className="h-3 w-3 rounded-full bg-cobalt ring-4 ring-cobalt/25" /> HQ
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="h-3 w-3 rounded-full bg-ink/70 ring-2 ring-paper" /> Branch
+                <span className="h-3 w-3 rounded-full bg-white/70 ring-2 ring-ivory" /> Branch
               </span>
             </span>
           </div>
@@ -117,44 +117,44 @@ export function BranchNetwork() {
         {/* Detail panel */}
         <Reveal delay={0.1}>
           <div
-            className="card-material flex h-full flex-col rounded-blob p-6 shadow-emboss sm:p-7"
+            className="card-material flex h-full flex-col rounded-xl p-6 shadow-emboss sm:p-7"
             aria-live="polite"
           >
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="font-display text-2xl font-semibold text-ink">{selected.city}</h3>
-                <p className="mt-0.5 text-sm font-medium text-ink-soft">{selected.state}</p>
+                <h3 className="font-display text-2xl font-medium text-ivory">{selected.city}</h3>
+                <p className="mt-0.5 text-sm font-medium text-ash">{selected.state}</p>
               </div>
               {selected.hq && (
-                <span className="rounded-full bg-clay px-3 py-1 text-xs font-semibold text-paper">
+                <span className="rounded-full bg-cobalt px-3 py-1 text-xs font-medium text-ivory">
                   Headquarters
                 </span>
               )}
             </div>
 
-            <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-ink-soft">
-              <Icon name="pin" size={16} className="mt-0.5 shrink-0 text-clay" />
+            <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-ash">
+              <Icon name="pin" size={16} className="mt-0.5 shrink-0 text-cobalt" />
               {selected.address}
             </p>
 
             <div className="mt-5">
-              <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft/80">
+              <p className="text-xs font-medium uppercase tracking-wide text-ash/80">
                 Services
               </p>
               <ul className="mt-2 grid gap-1.5 sm:grid-cols-2">
                 {selected.services.map((s) => (
-                  <li key={s} className="flex items-start gap-2 text-sm text-ink-soft">
-                    <Icon name="check" size={15} className="mt-0.5 shrink-0 text-pine" />
+                  <li key={s} className="flex items-start gap-2 text-sm text-ash">
+                    <Icon name="check" size={15} className="mt-0.5 shrink-0 text-ivory" />
                     {s}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="mt-5 flex flex-wrap gap-3 border-t border-ink/10 pt-5">
+            <div className="mt-5 flex flex-wrap gap-3 border-t border-white/10 pt-5">
               <a
                 href="tel:+917677888748"
-                className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-clay"
+                className="inline-flex items-center gap-2 rounded-full bg-elevated px-4 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-cobalt"
               >
                 <Icon name="phone" size={16} />
                 Call / WhatsApp
@@ -162,19 +162,19 @@ export function BranchNetwork() {
               {selected.hq && (
                 <a
                   href="mailto:info@policyadda.co.in"
-                  className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-sand"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-surface"
                 >
                   info@policyadda.co.in
                 </a>
               )}
-              <span className="inline-flex items-center gap-2 rounded-full bg-sand px-4 py-2.5 text-sm font-medium text-ink-soft">
-                <Icon name="spark" size={16} className="text-clay" />
+              <span className="inline-flex items-center gap-2 rounded-full bg-surface px-4 py-2.5 text-sm font-medium text-ash">
+                <Icon name="spark" size={16} className="text-cobalt" />
                 {selected.hours}
               </span>
             </div>
 
-            <div className="mt-5 border-t border-ink/10 pt-4">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-soft/80">
+            <div className="mt-5 border-t border-white/10 pt-4">
+              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-ash/80">
                 All branches
               </p>
               <div className="flex flex-wrap gap-2">
@@ -187,8 +187,8 @@ export function BranchNetwork() {
                     className={cx(
                       'rounded-full border px-3 py-1.5 text-xs font-medium transition-colors',
                       b.id === selectedId
-                        ? 'border-clay bg-clay text-paper'
-                        : 'border-ink/15 text-ink-soft hover:border-clay/40 hover:text-clay-dark',
+                        ? 'border-cobalt bg-cobalt text-ivory'
+                        : 'border-white/15 text-ash hover:border-cobalt/40 hover:text-cobalt',
                     )}
                   >
                     {b.city}

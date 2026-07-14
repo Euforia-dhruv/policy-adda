@@ -22,14 +22,14 @@ export function Comparison() {
 
       <Reveal className="relative mx-auto mt-12 max-w-4xl">
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="card-material rounded-blob p-7 shadow-emboss">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-ink-soft">
+          <div className="card-material rounded-xl p-7 shadow-emboss">
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-ash">
               The Marketplace
             </p>
             <ul className="mt-5 space-y-4">
               {rows.map((r, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-ink-soft">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ink/5 text-ink-soft" aria-hidden="true">
+                <li key={i} className="flex items-start gap-3 text-sm text-ash">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white/5 text-ash" aria-hidden="true">
                     <Icon name="chat" size={13} />
                   </span>
                   {r.marketplace}
@@ -38,14 +38,14 @@ export function Comparison() {
             </ul>
           </div>
 
-          <div className="rounded-blob bg-gradient-to-br from-clay to-bronze p-7 text-paper shadow-contact">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-paper/80">
+          <div className="material-forest rounded-xl border border-cobalt/40 p-7 text-ivory">
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-cobalt">
               Policy Adda
             </p>
             <ul className="mt-5 space-y-4">
               {rows.map((r, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-paper">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-paper/15 text-paper" aria-hidden="true">
+                <li key={i} className="flex items-start gap-3 text-sm text-ivory">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-cobalt/20 text-cobalt" aria-hidden="true">
                     <Icon name="check" size={13} />
                   </span>
                   {r.adda}
@@ -56,14 +56,14 @@ export function Comparison() {
         </div>
 
         <div
-          className="absolute left-1/2 top-1/2 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-paper bg-ink font-display text-sm font-bold text-paper shadow-lift md:grid"
+          className="absolute left-1/2 top-1/2 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-white/15 bg-elevated font-display text-sm font-medium text-ivory md:grid"
           aria-hidden="true"
         >
           VS
         </div>
       </Reveal>
 
-      <p className={cx('mt-8 text-center text-sm text-ink-soft')}>
+      <p className={cx('mt-8 text-center text-sm text-ash')}>
         Both compare prices. Only one stays for the claim.
       </p>
     </Section>
