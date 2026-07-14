@@ -117,7 +117,7 @@ export function BranchNetwork() {
         {/* Detail panel */}
         <Reveal delay={0.1}>
           <div
-            className="flex h-full flex-col rounded-blob border border-ink/10 bg-paper p-6 shadow-card sm:p-7"
+            className="card-material flex h-full flex-col rounded-blob p-6 shadow-emboss sm:p-7"
             aria-live="polite"
           >
             <div className="flex items-start justify-between gap-3">

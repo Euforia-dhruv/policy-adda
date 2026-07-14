@@ -1,4 +1,4 @@
-# Policy Adda — Next-Generation Digital Platform
+# Policy Adda — Premium Neo-Skeuomorphic Platform
 
 A premium marketing experience for **Policy Adda**, an insurance & loan
 consultancy based in Ranchi, Jharkhand. It positions the brand as the modern,
@@ -6,9 +6,10 @@ relationship-led alternative to national insurance marketplaces — *“Policy A
 Adda Apna.”*
 
 This is a design-led rebuild of the original prototype: same business, same
-real data, but re-architected as a warm, editorial, human brand experience
-benchmarked against Apple, Stripe, Linear, Vercel, Notion, Airbnb and CRED —
-not against PolicyBazaar.
+real data, but re-architected as a **premium neo-skeuomorphic** brand
+experience — warm ivory/leather/aluminium/glass materials, realistic lighting
+and a consultation-desk hero — benchmarked against Apple, Stripe, Linear, CRED
+and the craft of physical product design, not against PolicyBazaar.
 
 ## Stack
 
@@ -46,24 +47,27 @@ HQ at Plaza Chowk, 10 branches, 20+ insurer partners, named advisors, a
 
 Five principles drove every decision:
 
-1. **Warmth over corporate.** A khadi-paper palette and terracotta “ember”
-   replace generic insurance blue. The brand should feel like a trusted local
-   *adda* (gathering place), not a banking portal.
-2. **Editorial, not template.** A characterful display serif paired with a
-   humanist sans gives the site a magazine-like rhythm and a point of view.
+1. **Material warmth over corporate.** A warm-ivory page, leather and
+   aluminium surfaces, glass cards and copper accents replace generic insurance
+   blue. The brand should feel like a trusted local *adda* (gathering place)
+   rendered with the care of a physical product, not a banking portal.
+2. **Editorial serif, not template.** DM Serif Display paired with Manrope
+   gives the site a magazine-like rhythm and a point of view.
 3. **Calm confidence.** Generous whitespace, clear typographic scale, and
-   restrained motion. Nothing shouts; the brand whispers and is believed.
+   restrained, lighting-aware motion. Nothing shouts; the brand whispers and is
+   believed.
 4. **Relationship made visible.** Advisors have faces, branches have maps,
    claims have a timeline. Trust is shown, not asserted.
-5. **Craft in the details.** Glass surfaces, soft auras, animated counters,
-   scroll reveals, focus rings, a reading-progress bar, a floating WhatsApp
-   helper and a sticky CTA — each subtle, each purposeful.
+5. **Craft in the details.** Raised/inset material cards, cursor-following
+   light, soft auras, animated counters, scroll reveals, focus rings, a
+   reading-progress bar, a floating WhatsApp helper and a sticky CTA — each
+   subtle, each purposeful.
 
 ## Typography
 
-- **Display — Fraunces** (variable, optical sizing, 400–700). A warm,
-  editorial serif with personality; used for headlines and numbers. Chosen over
-  a cold geometric sans to signal “human, timeless.”
+- **Display — DM Serif Display** (400–700). A high-contrast, elegant serif
+  with personality; used for headlines and numbers. Chosen over a cold
+  geometric sans to signal “human, timeless.”
 - **Body — Manrope** (400–800). A modern, friendly, highly legible grotesque;
   ideal for long-form explanations and UI text.
 - **Scale.** Fluid `clamp()` headings (`display-xl` → `display-md`) keep
@@ -74,16 +78,19 @@ Five principles drove every decision:
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `paper` | `#FBF7F1` | Warm ivory page background |
-| `sand` / `mist` | `#F1E7D8` / `#F6EFE6` | Section surfaces for rhythm |
+| `paper` | `#FBF8F3` | Warm ivory page background |
+| `mist` / `sand` | `#F3ECE2` / `#EFE6D8` | Section surfaces for rhythm |
+| `walnut` | `#5A4636` | Warm wood/leather tone |
 | `ink` | `#1B1714` | Near-black warm text |
-| `clay` | `#C0492B` (dark `#97371F`) | Primary “ember” accent |
-| `gold` | `#D9A441` | Warm secondary accent |
-| `pine` | `#2F5D50` | Trust/success (claims, WhatsApp) |
-| `sage` | `#5C7A6B` | Muted support |
+| `clay` / `copper` | `#B26A3E` | Primary “copper” accent |
+| `gold` | `#C49A5E` | Warm secondary accent |
+| `forest` / `pine` | `#2C4A3B` | Trust/success (claims, CTA) |
+| `bronze` | `#8A5A33` | Muted support tone |
 
-All text/background pairings meet WCAG AA; small text uses `clay-dark` or
-`ink-soft` for sufficient contrast.
+All text/background pairings meet WCAG AA; small text uses `ink-soft` for
+sufficient contrast. Material surfaces (`card-raised`, `card-material`,
+`material-leather`, `material-aluminium`, `material-forest`, `glass-strong`)
+carry layered contact/emboss shadows for the neo-skeuomorphic feel.
 
 ## Motion principles
 
@@ -106,25 +113,29 @@ src/
   components/
     ui.tsx              Design system: Container, Section, SectionHeading,
                         Button, Reveal, Counter, ScrollProgress,
-                        FloatingWhatsApp, StickyCTA, Accordion, Logo, cx()
+                        FloatingWhatsApp, StickyCTA, Accordion, Logo, cx(),
+                        CursorGlow (pointer-following light)
     Nav.tsx             Glass sticky nav + accessible mobile menu
-    Hero.tsx            Editorial hero + floating advisor/claim chips + form
+    Hero.tsx            Consultation-desk hero: parallax float cards + physical
+                        QuoteForm, advisor availability indicator
+    QuoteForm.tsx       Physical object form: floating labels, inset inputs
     TrustBar.tsx        Animated counters (branches, partners, claim days)
-    WhyUs.tsx           3 pillars: person / claims / local (dark band)
     ProductGrid.tsx     8 premium product cards (benefits, best-for, CTA)
     LoansStrip.tsx      Loan types as chips
     Process.tsx         4-step process
     ClaimsExperience.tsx Animated vertical claims timeline
-    Comparison.tsx      Marketplace vs Adda side-by-side
+    Comparison.tsx      Marketplace vs Adda side-by-side (material cards)
     BranchNetwork.tsx   Interactive network map (clickable pins + detail)
-    MeetYourAdvisor.tsx Named advisor profile cards
+    MeetYourAdvisor.tsx Named advisor profile cards (availability dot)
     Testimonials.tsx    3 attributed testimonials
     PartnerStrip.tsx    Insurer partners (marquee)
     Faq.tsx             Accessible accordion
-    CTABand.tsx         Final quote band
+    ConceptScreens.tsx  Future-product concept previews (dashboard, claims…)
+    CTABand.tsx         Final quote band (material-forest)
     Footer.tsx          Contact + IRDAI-style compliance notice
     Toast.tsx           Lightweight aria-live toaster
     icons.tsx           Inline SVG icon set
+    WhyUs.tsx           (legacy, not in current flow)
   data/                 products, branches, partners, advisors, faqs, testimonials
   App.tsx               Composition + MotionConfig + global UI
 ```
@@ -146,7 +157,7 @@ are token-driven Tailwind or CSS classes.
 
 - SVG icons and CSS gradients (no heavy images).
 - `prefers-reduced-motion` short-circuits animation work.
-- Vite production build: ~103 kB gzipped JS, ~7 kB gzipped CSS.
+- Vite production build: ~105 kB gzipped JS, ~8 kB gzipped CSS.
 - Lighthouse target: Performance 95+ / Accessibility 95+ (verify in CI).
 
 ## Backend integration plan

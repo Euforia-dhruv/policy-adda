@@ -8,8 +8,10 @@ import {
   AnimatePresence,
   motion,
   useInView,
+  useMotionValue,
   useReducedMotion,
   useScroll,
+  useSpring,
 } from 'framer-motion'
 import { Icon, type IconName } from './icons'
 
@@ -34,6 +36,14 @@ export function Reveal({
   as?: 'div' | 'li' | 'section' | 'article' | 'ul'
 }) {
   const MotionTag = motion[as] as typeof motion.div
+  const reduce = useReducedMotion()
+  if (reduce) {
+    return (
+      <MotionTag className={className}>
+        {children}
+      </MotionTag>
+    )
+  }
   return (
     <MotionTag
       className={className}
@@ -437,6 +447,44 @@ export function Logo({ className }: { className?: string }) {
         Policy<span className="text-clay">Adda</span>
       </span>
     </span>
+  )
+}
+
+/* ------------------------------------------------------------------ */
+/* CursorGlow — soft light that follows the pointer                    */
+/* ------------------------------------------------------------------ */
+export function CursorGlow() {
+  const x = useMotionValue(-200)
+  const y = useMotionValue(-200)
+  const sx = useSpring(x, { stiffness: 120, damping: 22, mass: 0.4 })
+  const sy = useSpring(y, { stiffness: 120, damping: 22, mass: 0.4 })
+  const reduce = useReducedMotion()
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      x.set(e.clientX)
+      y.set(e.clientY)
+    }
+    window.addEventListener('pointermove', onMove)
+    return () => window.removeEventListener('pointermove', onMove)
+  }, [x, y])
+
+  if (reduce) return null
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      className="pointer-events-none fixed left-0 top-0 z-[3] h-80 w-80 rounded-full"
+      style={{
+        x: sx,
+        y: sy,
+        translateX: '-50%',
+        translateY: '-50%',
+        background:
+          'radial-gradient(circle, rgba(178,106,62,0.14), rgba(196,154,94,0.07) 45%, transparent 70%)',
+        mixBlendMode: 'multiply',
+      }}
+    />
   )
 }
 

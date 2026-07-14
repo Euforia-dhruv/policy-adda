@@ -46,7 +46,7 @@ export function Process() {
       <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {steps.map((s, i) => (
           <Reveal as="li" key={s.title} delay={i * 0.08} className="relative">
-            <div className="flex h-full flex-col rounded-blob border border-ink/10 bg-paper p-6 shadow-card">
+              <div className="card-material flex h-full flex-col rounded-blob p-6 shadow-emboss">
               <div className="flex items-center justify-between">
                 <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-paper">
                   <Icon name={s.icon} size={22} />

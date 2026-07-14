@@ -6,9 +6,9 @@ export function CTABand() {
   return (
     <section id="contact" className="container-page py-16 lg:py-24">
       <Reveal>
-        <div className="aura-dark relative overflow-hidden rounded-4xl bg-ink px-6 py-12 shadow-lift sm:px-12 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:px-16 lg:py-16">
+        <div className="aura-dark relative overflow-hidden rounded-4xl material-forest px-6 py-12 shadow-contact sm:px-12 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:px-16 lg:py-16">
           <div className="text-paper">
-            <span className="eyebrow text-ocher">
+            <span className="eyebrow text-gold">
               <Icon name="spark" size={15} />
               Start the conversation
             </span>
@@ -48,7 +48,7 @@ export function CTABand() {
                 ] as [IconName, string][]
               ).map(([icon, label]) => (
                 <li key={label} className="flex items-center gap-2">
-                  <Icon name={icon} size={16} className="text-ocher" />
+                  <Icon name={icon} size={16} className="text-gold" />
                   {label}
                 </li>
               ))}

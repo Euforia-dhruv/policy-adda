@@ -25,7 +25,7 @@ export function MeetYourAdvisor() {
       <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {advisors.map((a, i) => (
           <Reveal as="li" key={a.id} delay={Math.min(i * 0.07, 0.28)}>
-            <article className="card-hover group flex h-full flex-col rounded-blob border border-ink/10 bg-paper p-6 shadow-card hover:shadow-lift">
+            <article className="card-hover group flex h-full flex-col rounded-blob border border-white/60 bg-paper p-6 shadow-emboss hover:shadow-contact">
               <div className="flex items-center gap-4">
                 <span
                   className={cx(
@@ -67,7 +67,8 @@ export function MeetYourAdvisor() {
               </dl>
 
               <div className="mt-5 flex items-center justify-between gap-3 border-t border-ink/10 pt-4">
-                <span className="text-xs font-medium uppercase tracking-wide text-ink-soft/80">
+                <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-ink-soft/80">
+                  <span className="availability-dot" />
                   {a.city}
                 </span>
                 <div className="flex gap-2">

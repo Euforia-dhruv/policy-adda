@@ -22,7 +22,7 @@ export function Comparison() {
 
       <Reveal className="relative mx-auto mt-12 max-w-4xl">
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-blob border border-ink/10 bg-paper p-7 shadow-card">
+          <div className="card-material rounded-blob p-7 shadow-emboss">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-ink-soft">
               The Marketplace
             </p>
@@ -38,7 +38,7 @@ export function Comparison() {
             </ul>
           </div>
 
-          <div className="rounded-blob bg-gradient-to-br from-clay to-clay-dark p-7 text-paper shadow-lift">
+          <div className="rounded-blob bg-gradient-to-br from-clay to-bronze p-7 text-paper shadow-contact">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-paper/80">
               Policy Adda
             </p>

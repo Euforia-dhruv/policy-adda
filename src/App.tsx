@@ -2,21 +2,24 @@ import { MotionConfig } from 'framer-motion'
 import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
 import { TrustBar } from './components/TrustBar'
-import { WhyUs } from './components/WhyUs'
+import { MeetYourAdvisor } from './components/MeetYourAdvisor'
 import { ProductGrid } from './components/ProductGrid'
-import { LoansStrip } from './components/LoansStrip'
-import { Process } from './components/Process'
 import { ClaimsExperience } from './components/ClaimsExperience'
 import { Comparison } from './components/Comparison'
 import { BranchNetwork } from './components/BranchNetwork'
-import { MeetYourAdvisor } from './components/MeetYourAdvisor'
 import { Testimonials } from './components/Testimonials'
 import { PartnerStrip } from './components/PartnerStrip'
 import { Faq } from './components/Faq'
+import { ConceptScreens } from './components/ConceptScreens'
 import { CTABand } from './components/CTABand'
 import { Footer } from './components/Footer'
 import { ToastProvider } from './components/Toast'
-import { ScrollProgress, FloatingWhatsApp, StickyCTA } from './components/ui'
+import {
+  ScrollProgress,
+  FloatingWhatsApp,
+  StickyCTA,
+  CursorGlow,
+} from './components/ui'
 
 export default function App() {
   return (
@@ -29,21 +32,20 @@ export default function App() {
           Skip to content
         </a>
         <ScrollProgress />
+        <CursorGlow />
         <Nav />
         <main>
           <Hero />
           <TrustBar />
-          <WhyUs />
+          <MeetYourAdvisor />
           <ProductGrid />
-          <LoansStrip />
-          <Process />
           <ClaimsExperience />
           <Comparison />
           <BranchNetwork />
-          <MeetYourAdvisor />
           <Testimonials />
           <PartnerStrip />
           <Faq />
+          <ConceptScreens />
           <CTABand />
         </main>
         <Footer />

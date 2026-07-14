@@ -1,19 +1,26 @@
-import { useId, useState, type FormEvent } from 'react'
+import { useId, useState, type FormEvent, type ReactNode } from 'react'
 import { products } from '../data/products'
 import { branches } from '../data/branches'
 import { useToast } from './Toast'
 import { Icon } from './icons'
+import { Button } from './ui'
 
 const insuranceOptions = [
   { value: 'loan', label: 'Loan enquiry' },
   ...products.map((p) => ({ value: p.id, label: p.name })),
 ]
 
-const initialState = {
-  product: '',
-  name: '',
-  mobile: '',
-  branch: '',
+const initialState = { product: '', name: '', mobile: '', branch: '' }
+
+function Label({ htmlFor, children }: { htmlFor: string; children: ReactNode }) {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className="pointer-events-none absolute left-4 top-4 text-sm text-ink-soft transition-all duration-200 peer-focus:top-2 peer-focus:text-xs peer-focus:font-semibold peer-focus:text-clay-dark peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-xs"
+    >
+      {children}
+    </label>
+  )
 }
 
 export function QuoteForm({ compact = false }: { compact?: boolean }) {
@@ -48,11 +55,8 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
     }
     const payload = {
       ...values,
-      productLabel:
-        insuranceOptions.find((o) => o.value === values.product)?.label ??
-        values.product,
-      branchLabel:
-        branches.find((b) => b.id === values.branch)?.city ?? values.branch,
+      productLabel: insuranceOptions.find((o) => o.value === values.product)?.label ?? values.product,
+      branchLabel: branches.find((b) => b.id === values.branch)?.city ?? values.branch,
       submittedAt: new Date().toISOString(),
     }
     console.log('[Policy Adda] New enquiry:', payload)
@@ -62,52 +66,54 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
     setValues(initialState)
   }
 
-  const field =
-    'w-full rounded-xl border border-ink/15 bg-paper px-3.5 py-3 text-sm text-ink placeholder:text-ink-soft focus:border-clay'
+  const fieldBase =
+    'peer inset-input w-full rounded-xl px-4 pb-2 pt-5 text-sm text-ink placeholder-transparent transition-colors'
 
   return (
     <form
       onSubmit={onSubmit}
       noValidate
-      className={`rounded-blob bg-sand p-5 shadow-card sm:p-6 ${
-        compact ? '' : 'lg:p-7'
-      }`}
       aria-label="Get a free quote"
+      className={`card-raised ${compact ? 'p-6' : 'p-6 sm:p-7'}`}
     >
-      <div className="mb-4 flex items-center gap-2">
-        <span className="grid h-8 w-8 place-items-center rounded-lg bg-clay text-paper">
-          <Icon name="spark" size={18} />
+      <div className="mb-5 flex items-center gap-3">
+        <span className="grid h-10 w-10 place-items-center rounded-xl bg-clay text-paper shadow-soft">
+          <Icon name="spark" size={20} />
         </span>
-        <p className="font-display text-lg font-semibold">
-          Get a free, no-pressure quote
-        </p>
+        <div>
+          <p className="font-display text-xl font-semibold leading-none">Get a free quote</p>
+          <p className="mt-1 text-xs text-ink-soft">No pressure. No spam. One working day.</p>
+        </div>
       </div>
 
       <div className="grid gap-4">
         <div>
-          <label
-            htmlFor={`${baseId}-product`}
-            className="mb-1.5 block text-sm font-medium text-ink-soft"
-          >
-            What do you need?
-          </label>
-          <select
-            id={`${baseId}-product`}
-            value={values.product}
-            onChange={(e) => update('product', e.target.value)}
-            aria-invalid={!!errors.product}
-            aria-describedby={errors.product ? `${baseId}-product-err` : undefined}
-            className={field}
-          >
-            <option value="">Select insurance or loan…</option>
-            {insuranceOptions.map((o) => (
-              <option key={o.value} value={o.value}>
-                {o.label}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              id={`${baseId}-product`}
+              value={values.product}
+              onChange={(e) => update('product', e.target.value)}
+              aria-invalid={!!errors.product}
+              aria-describedby={errors.product ? `${baseId}-product-err` : undefined}
+              className={`${fieldBase} appearance-none ${errors.product ? 'border-clay-dark' : ''}`}
+            >
+              <option value="" disabled hidden></option>
+              <option value="">Select insurance or loan…</option>
+              {insuranceOptions.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-ink-soft">
+              <Icon name="arrow" size={16} className="rotate-90" />
+            </span>
+            <Label htmlFor={`${baseId}-product`}>
+              {values.product ? 'Selected' : 'What do you need?'}
+            </Label>
+          </div>
           {errors.product && (
-            <p id={`${baseId}-product-err`} className="mt-1 text-xs text-clay-dark">
+            <p id={`${baseId}-product-err`} className="mt-1 px-1 text-xs text-clay-dark">
               {errors.product}
             </p>
           )}
@@ -115,53 +121,45 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label
-              htmlFor={`${baseId}-name`}
-              className="mb-1.5 block text-sm font-medium text-ink-soft"
-            >
-              Your name
-            </label>
-            <input
-              id={`${baseId}-name`}
-              type="text"
-              autoComplete="name"
-              value={values.name}
-              onChange={(e) => update('name', e.target.value)}
-              placeholder="e.g. Amit Kumar"
-              aria-invalid={!!errors.name}
-              aria-describedby={errors.name ? `${baseId}-name-err` : undefined}
-              className={field}
-            />
+            <div className="relative">
+              <input
+                id={`${baseId}-name`}
+                type="text"
+                autoComplete="name"
+                value={values.name}
+                onChange={(e) => update('name', e.target.value)}
+                placeholder=" "
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? `${baseId}-name-err` : undefined}
+                className={`${fieldBase} ${errors.name ? 'border-clay-dark' : ''}`}
+              />
+              <Label htmlFor={`${baseId}-name`}>Your name</Label>
+            </div>
             {errors.name && (
-              <p id={`${baseId}-name-err`} className="mt-1 text-xs text-clay-dark">
+              <p id={`${baseId}-name-err`} className="mt-1 px-1 text-xs text-clay-dark">
                 {errors.name}
               </p>
             )}
           </div>
 
           <div>
-            <label
-              htmlFor={`${baseId}-mobile`}
-              className="mb-1.5 block text-sm font-medium text-ink-soft"
-            >
-              Mobile number
-            </label>
-            <input
-              id={`${baseId}-mobile`}
-              type="tel"
-              inputMode="numeric"
-              autoComplete="tel"
-              value={values.mobile}
-              onChange={(e) => update('mobile', e.target.value)}
-              placeholder="10-digit number"
-              aria-invalid={!!errors.mobile}
-              aria-describedby={
-                errors.mobile ? `${baseId}-mobile-err` : undefined
-              }
-              className={field}
-            />
+            <div className="relative">
+              <input
+                id={`${baseId}-mobile`}
+                type="tel"
+                inputMode="numeric"
+                autoComplete="tel"
+                value={values.mobile}
+                onChange={(e) => update('mobile', e.target.value)}
+                placeholder=" "
+                aria-invalid={!!errors.mobile}
+                aria-describedby={errors.mobile ? `${baseId}-mobile-err` : undefined}
+                className={`${fieldBase} ${errors.mobile ? 'border-clay-dark' : ''}`}
+              />
+              <Label htmlFor={`${baseId}-mobile`}>Mobile number</Label>
+            </div>
             {errors.mobile && (
-              <p id={`${baseId}-mobile-err`} className="mt-1 text-xs text-clay-dark">
+              <p id={`${baseId}-mobile-err`} className="mt-1 px-1 text-xs text-clay-dark">
                 {errors.mobile}
               </p>
             )}
@@ -169,44 +167,44 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div>
-          <label
-            htmlFor={`${baseId}-branch`}
-            className="mb-1.5 block text-sm font-medium text-ink-soft"
-          >
-            Nearest branch
-          </label>
-          <select
-            id={`${baseId}-branch`}
-            value={values.branch}
-            onChange={(e) => update('branch', e.target.value)}
-            aria-invalid={!!errors.branch}
-            aria-describedby={errors.branch ? `${baseId}-branch-err` : undefined}
-            className={field}
-          >
-            <option value="">Select a branch…</option>
-            {branches.map((b) => (
-              <option key={b.id} value={b.id}>
-                {b.city}
-                {b.hq ? ' (HQ)' : ''}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              id={`${baseId}-branch`}
+              value={values.branch}
+              onChange={(e) => update('branch', e.target.value)}
+              aria-invalid={!!errors.branch}
+              aria-describedby={errors.branch ? `${baseId}-branch-err` : undefined}
+              className={`${fieldBase} appearance-none ${errors.branch ? 'border-clay-dark' : ''}`}
+            >
+              <option value="" disabled hidden></option>
+              <option value="">Select a branch…</option>
+              {branches.map((b) => (
+                <option key={b.id} value={b.id}>
+                  {b.city}
+                  {b.hq ? ' (HQ)' : ''}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-ink-soft">
+              <Icon name="arrow" size={16} className="rotate-90" />
+            </span>
+            <Label htmlFor={`${baseId}-branch`}>
+              {values.branch ? 'Selected' : 'Nearest branch'}
+            </Label>
+          </div>
           {errors.branch && (
-            <p id={`${baseId}-branch-err`} className="mt-1 text-xs text-clay-dark">
+            <p id={`${baseId}-branch-err`} className="mt-1 px-1 text-xs text-clay-dark">
               {errors.branch}
             </p>
           )}
         </div>
 
-        <button
-          type="submit"
-          className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-clay px-5 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-clay-dark"
-        >
+        <Button type="submit" icon="arrow" className="mt-1 w-full">
           Request my quote
-          <Icon name="arrow" size={18} />
-        </button>
-        <p className="text-center text-xs text-ink-soft">
-          We call back within one working day. No spam, no auto-dialers.
+        </Button>
+        <p className="flex items-center justify-center gap-2 text-center text-xs text-ink-soft">
+          <Icon name="check" size={14} className="text-pine" />
+          We call back within one working day. No auto-dialers.
         </p>
       </div>
     </form>

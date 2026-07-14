@@ -21,9 +21,9 @@ export function ProductGrid() {
       <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {products.map((p, i) => (
           <Reveal as="li" key={p.id} delay={Math.min(i * 0.05, 0.3)}>
-            <article className="card-hover group flex h-full flex-col rounded-blob border border-ink/10 bg-paper p-6 shadow-card hover:shadow-lift">
+            <article className="card-hover group flex h-full flex-col rounded-blob border border-white/60 bg-paper p-6 shadow-emboss hover:shadow-contact">
               <div className="flex items-start justify-between">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-sand text-clay transition-colors duration-500 group-hover:bg-clay group-hover:text-paper">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-clay/15 to-gold/15 text-clay transition-colors duration-500 group-hover:bg-clay group-hover:text-paper">
                   <Icon name={p.icon} size={24} />
                 </span>
                 <span className="translate-y-1 text-clay opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">

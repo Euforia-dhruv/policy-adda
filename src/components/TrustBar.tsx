@@ -23,7 +23,7 @@ export function TrustBar() {
     <section className="relative -mt-4 lg:-mt-8" aria-label="Why trust Policy Adda">
       <div className="container-page">
         <Reveal>
-          <div className="glass overflow-hidden rounded-blob">
+          <div className="card-material overflow-hidden rounded-blob">
             <dl className="grid grid-cols-2 divide-ink/10 lg:grid-cols-4 lg:divide-x">
               {stats.map((s, i) => (
                 <div

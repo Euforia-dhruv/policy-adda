@@ -40,6 +40,18 @@
     text-wrap: balance;
   }
 
+  /* Page-wide grain for tactile paper texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
   ::selection {
     background-color: theme('colors.clay.DEFAULT');
     color: theme('colors.paper');
@@ -49,7 +61,6 @@
     @apply outline-none ring-2 ring-clay ring-offset-2 ring-offset-paper;
   }
 
-  /* Premium, restrained scrollbar */
   * {
     scrollbar-width: thin;
     scrollbar-color: theme('colors.clay.light') transparent;
@@ -70,47 +81,74 @@
     @apply mx-auto w-full max-w-shell px-5 sm:px-6 lg:px-10;
   }
 
-  /* Glass surfaces */
+  /* ---- Glass ---- */
   .glass {
-    @apply border border-white/50 bg-white/55 shadow-soft backdrop-blur-xl;
+    @apply border border-white/55 bg-white/45 shadow-emboss backdrop-blur-xl;
   }
-  .glass-dark {
-    @apply border border-white/10 bg-ink/70 shadow-soft backdrop-blur-xl;
+  .glass-strong {
+    @apply border border-white/70 bg-white/55 shadow-lift backdrop-blur-2xl;
   }
 
-  /* Ambient page aura used behind hero / CTA */
+  /* ---- Physical material surfaces ---- */
+  .material-paper {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0) 32%),
+      linear-gradient(180deg, #fdfbf7, #f3ebdb);
+  }
+  .material-leather {
+    background:
+      radial-gradient(130% 120% at 14% 0%, rgba(255, 255, 255, 0.12), transparent 46%),
+      linear-gradient(155deg, #6e5440, #453322);
+  }
+  .material-aluminium {
+    background:
+      repeating-linear-gradient(96deg, rgba(255, 255, 255, 0.07) 0 1px, rgba(0, 0, 0, 0.035) 1px 2px),
+      linear-gradient(180deg, #efeae2, #d7cfc3);
+  }
+  .material-forest {
+    background:
+      radial-gradient(120% 100% at 80% 0%, rgba(255, 255, 255, 0.10), transparent 50%),
+      linear-gradient(155deg, #345747, #20382d);
+  }
+
+  /* Embossed raised card */
+  .card-material {
+    @apply rounded-blob border border-white/60 shadow-emboss;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 30%),
+      linear-gradient(180deg, #fdfbf7, #f1e9d9);
+  }
+  .card-raised {
+    @apply rounded-blob border border-white/70 shadow-contact;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 26%),
+      linear-gradient(180deg, #fefdfb, #f3ebdb);
+  }
+
+  /* Inset input well */
+  .inset-input {
+    @apply rounded-xl border border-ink/10 bg-sand/70 text-ink shadow-inset;
+  }
+  .inset-input:focus {
+    @apply border-clay bg-paper;
+  }
+
   .aura {
     background:
-      radial-gradient(60% 55% at 82% 8%, rgba(217, 164, 65, 0.28), transparent 60%),
-      radial-gradient(55% 50% at 6% 0%, rgba(194, 73, 43, 0.16), transparent 55%),
-      radial-gradient(45% 45% at 50% 120%, rgba(47, 93, 80, 0.12), transparent 60%);
+      radial-gradient(60% 55% at 82% 6%, rgba(196, 154, 94, 0.26), transparent 60%),
+      radial-gradient(55% 50% at 4% 0%, rgba(178, 106, 62, 0.16), transparent 55%),
+      radial-gradient(45% 45% at 50% 120%, rgba(44, 74, 59, 0.12), transparent 60%);
   }
-
   .aura-dark {
     background:
-      radial-gradient(50% 60% at 85% 0%, rgba(217, 164, 65, 0.22), transparent 60%),
-      radial-gradient(60% 70% at 0% 100%, rgba(194, 73, 43, 0.18), transparent 60%);
-  }
-
-  /* Signature dashed "local map" divider */
-  .motif-dashed {
-    background-image: linear-gradient(
-      to right,
-      currentColor 0,
-      currentColor 7px,
-      transparent 7px,
-      transparent 15px
-    );
-    background-repeat: repeat-x;
-    background-position: center;
-    background-size: 15px 2px;
+      radial-gradient(50% 60% at 85% 0%, rgba(196, 154, 94, 0.22), transparent 60%),
+      radial-gradient(60% 70% at 0% 100%, rgba(178, 106, 62, 0.18), transparent 60%);
   }
 
   .eyebrow {
     @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-clay-dark;
   }
 
-  /* Gradient text for accents */
   .text-gradient {
     @apply bg-gradient-to-br from-clay via-clay to-gold bg-clip-text text-transparent;
   }
@@ -119,17 +157,20 @@
     @apply transition-[transform,box-shadow] duration-500 ease-out;
   }
   .card-hover:hover {
-    @apply -translate-y-1.5 shadow-lift;
+    @apply -translate-y-1.5 shadow-contact;
   }
 
-  /* Faint dotted grid for the branch network map */
   .map-grid {
-    background-image: radial-gradient(rgba(27, 23, 20, 0.09) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(rgba(33, 28, 24, 0.08) 1.2px, transparent 1.2px);
     background-size: 20px 20px;
   }
-  .map-grid-dark {
-    background-image: radial-gradient(rgba(251, 247, 241, 0.10) 1.2px, transparent 1.2px);
-    background-size: 20px 20px;
+
+  .availability-dot {
+    @apply inline-block h-2.5 w-2.5 rounded-full bg-pine animate-availability;
+  }
+
+  .divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-ink/10 to-transparent;
   }
 }
 
@@ -155,6 +196,9 @@
       #000 88%,
       transparent
     );
+  }
+  .perspective {
+    perspective: 1200px;
   }
 }
 
