@@ -1,34 +1,34 @@
 export interface Testimonial {
-  id: string
-  quote: string
-  clientType: string
-  location: string
-  initials: string
+  id: string;
+  quote: string;
+  clientType: string;
+  location: string;
+  initials: string;
 }
 
 export const testimonials: Testimonial[] = [
   {
-    id: 't1',
+    id: "t1",
     quote:
-      'My car claim after the Giridih road accident was settled in nine days. The same person who sold me the policy followed up with the insurer on my behalf — I never had to chase a call centre.',
-    clientType: 'Car owner & small businessman',
-    location: 'Giridih',
-    initials: 'RK',
+      "One of the best insurance agency. Feel great being the part of Adda Policy Adda.",
+    clientType: "Corporate Leader",
+    location: "Ranchi",
+    initials: "ND",
   },
   {
-    id: 't2',
+    id: "t2",
     quote:
-      'We took a family floater for my parents and me. The advisor sat with us in the Lalpur office and explained exactly what each plan excluded. No pressure, just clear answers in Hindi.',
-    clientType: 'Working professional with ageing parents',
-    location: 'Ranchi',
-    initials: 'SP',
+      "Great experience, extraordinary customer service. They explained every policy option clearly and helped me choose the right one for my family.",
+    clientType: "Entrepreneur",
+    location: "Ranchi",
+    initials: "MA",
   },
   {
-    id: 't3',
+    id: "t3",
     quote:
-      'As a fleet owner with six goods carriers, I needed someone who understood downtime. Policy Adda renewed all vehicles in one visit and helped with a commercial claim that kept us running.',
-    clientType: 'Transport fleet owner',
-    location: 'Dhanbad',
-    initials: 'MS',
+      "Best insurance agency, it has a great service. When I needed help with my claim, their team was with me every step of the way.",
+    clientType: "Doctor",
+    location: "Patna",
+    initials: "SJ",
   },
-]
+];

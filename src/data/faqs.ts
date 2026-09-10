@@ -1,31 +1,37 @@
-export interface Faq {
-  q: string
-  a: string
+export interface FaqItem {
+  question: string;
+  answer: string;
 }
 
-export const faqs: Faq[] = [
+export const faqs: FaqItem[] = [
   {
-    q: 'Is Policy Adda an insurance company?',
-    a: 'No. We are an independent insurance & loan consultancy. We work with 20+ insurer partners to help you compare and choose the right plan, and we stay with you through renewal and claims. We are paid by the insurer, not by selling you more than you need.',
+    question: "What services does Policy Adda offer?",
+    answer:
+      "Policy Adda is a full-service insurance and finance consultancy. We offer Motor Insurance (car, bike, commercial vehicle), Health Insurance (family, critical illness, corporate), Life Insurance (term, whole life, endowment, moneyback), Travel Insurance (international, domestic, student), and Loan services (personal, business, home, car, LAP, and more).",
   },
   {
-    q: 'How is this different from a price-comparison marketplace?',
-    a: 'A marketplace gives you a screen and a toll-free number. Policy Adda gives you a named advisor at a real branch near you. The same person who helps you choose also helps you claim — that relationship is the product.',
+    question: "Which insurance companies does Policy Adda work with?",
+    answer:
+      "We work with 12+ insurer partners including ICICI Lombard, HDFC ERGO, Bajaj Allianz, TATA AIG, IFFCO Tokio, Bharti AXA, United India Insurance, Cholamandalam, Kotak, Liberty General, Future Generali, and Universal Sompo. We compare plans across all partners to find the best fit for you.",
   },
   {
-    q: 'Do you charge customers for advice?',
-    a: 'Advisory and quote comparison are free for you. Our commission comes from the insurer you eventually choose. You never pay us a fee to be advised well.',
+    question: "How is Policy Adda different from online marketplaces?",
+    answer:
+      "Online marketplaces give you a price and disappear. Policy Adda gives you a named advisor, a branch desk near you, and someone who stays until your claim is settled. We are a real relationship, not a checkout page.",
   },
   {
-    q: 'What happens when I make a claim?',
-    a: 'You call or visit your branch. Our claims specialist prepares the paperwork, coordinates with the insurer, and follows up until settlement. Most motor and health claims we handle are closed without you chasing a call centre.',
+    question: "Do I have to visit a branch to buy a policy?",
+    answer:
+      "No. You can call, WhatsApp, or fill in the quote form online. But if you prefer a face-to-face conversation, our office is at Z Complex, Near Bata Showroom, Tharpakhna, Plaza Chowk, Ranchi-834001.",
   },
   {
-    q: 'Can I walk into a branch without an appointment?',
-    a: 'Yes. All ten branches — from Plaza Chowk in Ranchi to Patna and Noida — welcome walk-ins during working hours. For a specific advisor, a quick call helps us have them free.',
+    question: "How can I contact Policy Adda?",
+    answer:
+      "You can reach us by phone at +91 76778 88748 (Mon–Sat, 9:30 AM – 6 PM), WhatsApp us at the same number, or email us at info@policyadda.co.in. You can also visit our office at Plaza Chowk, Ranchi.",
   },
   {
-    q: 'Which areas do you serve?',
-    a: 'We are headquartered in Ranchi and serve Jharkhand, Bihar and Noida through ten branch desks, with remote advice available across India by phone and WhatsApp.',
+    question: "Does Policy Adda also help with loans?",
+    answer:
+      "Yes. We are not just an insurance agency — we also help with Personal Loans, Business Loans, Home Loans, Car Loans, Bike Loans, Loan Against Property (LAP), Loan Against Security (LAS), Equipment Machine Loans, Gold Loans, and more.",
   },
-]
+];

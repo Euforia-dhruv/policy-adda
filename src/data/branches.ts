@@ -1,127 +1,105 @@
-export type State = 'Jharkhand' | 'Bihar' | 'Uttar Pradesh'
-
 export interface Branch {
-  id: string
-  city: string
-  state: State
-  address: string
-  hq?: boolean
-  /** Position on the stylised network map (0–100 grid, west→east / north→south). */
-  map: { x: number; y: number }
-  /** Tailwind arbitrary position class matching `map` (kept literal for the JIT). */
-  pos: string
-  services: string[]
-  hours: string
-}
-
-export const hq: Branch = {
-  id: 'ranchi-hq',
-  city: 'Ranchi',
-  state: 'Jharkhand',
-  address:
-    'Z Complex, 1st Floor, Near Bata Showroom, Tharpakhna, Plaza Chowk, Ranchi, Jharkhand – 834001',
-  hq: true,
-  map: { x: 60, y: 64 },
-  pos: 'left-[60%] top-[64%]',
-  services: [
-    'Insurance & loan consultancy',
-    'Dedicated claims desk',
-    'Renewals & servicing',
-    'Advisor meetups',
-  ],
-  hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+  id: string;
+  city: string;
+  state: string;
+  address: string;
+  hours: string;
+  services: string[];
+  hq?: boolean;
+  map: { x: number; y: number };
+  pos: string;
 }
 
 export const branches: Branch[] = [
-  hq,
   {
-    id: 'lalpur',
-    city: 'Lalpur',
-    state: 'Jharkhand',
-    address: 'Lalpur branch desk, Ranchi urban area',
-    map: { x: 59.5, y: 65 },
-    pos: 'left-[59.5%] top-[65%]',
-    services: ['Insurance consultancy', 'Loan assistance', 'Claims support'],
-    hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+    id: "ranchi-hq",
+    city: "Ranchi",
+    state: "Jharkhand",
+    address: "Z Complex, Near Bata Showroom, Tharpakhna, Plaza Chowk, Ranchi 834001",
+    hours: "Mon–Sat · 9:30 AM – 6 PM",
+    services: ["Motor Insurance", "Health Insurance", "Life Insurance", "Claims Assistance", "Loan Advisory"],
+    hq: true,
+    map: { x: 52, y: 48 },
+    pos: "left-[52%] top-[48%]",
   },
   {
-    id: 'ramgarh',
-    city: 'Ramgarh',
-    state: 'Jharkhand',
-    address: 'Ramgarh town branch desk',
-    map: { x: 60.5, y: 61 },
-    pos: 'left-[60.5%] top-[61%]',
-    services: ['Insurance consultancy', 'Motor & health', 'Renewals'],
-    hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+    id: "noida",
+    city: "Noida",
+    state: "Uttar Pradesh",
+    address: "Sector 18, Noida 201301",
+    hours: "Mon–Sat · 10 AM – 7 PM",
+    services: ["Motor Insurance", "Health Insurance", "Life Insurance", "Commercial Vehicle", "Loan Advisory"],
+    map: { x: 15, y: 25 },
+    pos: "left-[15%] top-[25%]",
   },
   {
-    id: 'hazaribagh',
-    city: 'Hazaribagh',
-    state: 'Jharkhand',
-    address: 'Hazaribagh town branch desk',
-    map: { x: 61, y: 58.5 },
-    pos: 'left-[61%] top-[58.5%]',
-    services: ['Insurance consultancy', 'Loan assistance', 'Claims support'],
-    hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+    id: "patna",
+    city: "Patna",
+    state: "Bihar",
+    address: "Fraser Road, Patna 800001",
+    hours: "Mon–Sat · 10 AM – 7 PM",
+    services: ["Motor Insurance", "Health Insurance", "Life Insurance", "Loan Advisory"],
+    map: { x: 28, y: 40 },
+    pos: "left-[28%] top-[40%]",
   },
   {
-    id: 'giridih',
-    city: 'Giridih',
-    state: 'Jharkhand',
-    address: 'Giridih town branch desk',
-    map: { x: 62.5, y: 61 },
-    pos: 'left-[62.5%] top-[61%]',
-    services: ['Insurance consultancy', 'Motor & health', 'Renewals'],
-    hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+    id: "biharsharif",
+    city: "Bihar Sharif",
+    state: "Bihar",
+    address: "Katra Road, Bihar Sharif 803101",
+    hours: "Mon–Sat · 10 AM – 5 PM",
+    services: ["Motor Insurance", "Health Insurance"],
+    map: { x: 25, y: 50 },
+    pos: "left-[25%] top-[50%]",
   },
   {
-    id: 'dhanbad',
-    city: 'Dhanbad',
-    state: 'Jharkhand',
-    address: 'Dhanbad city branch desk',
-    map: { x: 63, y: 60.5 },
-    pos: 'left-[63%] top-[60.5%]',
-    services: ['Insurance & fleet covers', 'Business loans', 'Claims desk'],
-    hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+    id: "jamshedpur",
+    city: "Jamshedpur",
+    state: "Jharkhand",
+    address: "Bistupur, Jamshedpur 831001",
+    hours: "Mon–Sat · 10 AM – 6 PM",
+    services: ["Motor Insurance", "Health Insurance", "Claims Assistance"],
+    map: { x: 65, y: 55 },
+    pos: "left-[65%] top-[55%]",
   },
   {
-    id: 'jamshedpur',
-    city: 'Jamshedpur',
-    state: 'Jharkhand',
-    address: 'Jamshedpur (Tatanagar) branch desk',
-    map: { x: 64.5, y: 65 },
-    pos: 'left-[64.5%] top-[65%]',
-    services: ['Insurance consultancy', 'Group health', 'Loan assistance'],
-    hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+    id: "dhanbad",
+    city: "Dhanbad",
+    state: "Jharkhand",
+    address: "Bank More, Dhanbad 828101",
+    hours: "Mon–Sat · 10 AM – 6 PM",
+    services: ["Motor Insurance", "Health Insurance", "Commercial Vehicle"],
+    map: { x: 62, y: 32 },
+    pos: "left-[62%] top-[32%]",
   },
   {
-    id: 'patna',
-    city: 'Patna',
-    state: 'Bihar',
-    address: 'Patna city branch desk',
-    map: { x: 63, y: 52 },
-    pos: 'left-[63%] top-[52%]',
-    services: ['Insurance consultancy', 'Home & personal loans', 'Claims support'],
-    hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+    id: "hazaribagh",
+    city: "Hazaribagh",
+    state: "Jharkhand",
+    address: "Court Road, Hazaribagh 825301",
+    hours: "Mon–Sat · 10 AM – 6 PM",
+    services: ["Motor Insurance", "Life Insurance", "Claims Assistance"],
+    map: { x: 40, y: 38 },
+    pos: "left-[40%] top-[38%]",
   },
   {
-    id: 'biharsharif',
-    city: 'Biharsharif',
-    state: 'Bihar',
-    address: 'Biharsharif town branch desk',
-    map: { x: 64, y: 55 },
-    pos: 'left-[64%] top-[55%]',
-    services: ['Insurance consultancy', 'Motor & health', 'Renewals'],
-    hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+    id: "ramgarh",
+    city: "Ramgarh",
+    state: "Jharkhand",
+    address: "Main Road, Ramgarh 825101",
+    hours: "Mon–Sat · 10 AM – 6 PM",
+    services: ["Motor Insurance", "Health Insurance"],
+    map: { x: 45, y: 35 },
+    pos: "left-[45%] top-[35%]",
   },
   {
-    id: 'noida',
-    city: 'Noida',
-    state: 'Uttar Pradesh',
-    address: 'Noida (NCR) branch desk',
-    map: { x: 58, y: 36 },
-    pos: 'left-[58%] top-[36%]',
-    services: ['Insurance consultancy', 'Corporate group covers', 'Advisor desk'],
-    hours: 'Mon–Sat · 10:00 AM – 7:00 PM',
+    id: "giridih",
+    city: "Giridih",
+    state: "Jharkhand",
+    address: "Main Road, Giridih 815301",
+    hours: "Mon–Sat · 10 AM – 5 PM",
+    services: ["Motor Insurance", "Health Insurance"],
+    map: { x: 55, y: 28 },
+    pos: "left-[55%] top-[28%]",
   },
-]
+];

@@ -1,58 +1,69 @@
 export interface Advisor {
-  id: string
-  name: string
-  initials: string
-  role: string
-  specialization: string
-  experience: string
-  languages: string[]
-  city: string
-  accent: string
+  id: string;
+  name: string;
+  initials: string;
+  role: string;
+  specialization: string;
+  experience: string;
+  languages: string[];
+  city: string;
+  accent: string;
 }
 
 export const advisors: Advisor[] = [
   {
-    id: 'a1',
-    name: 'Priya Sinha',
-    initials: 'PS',
-    role: 'Senior Insurance Advisor',
-    specialization: 'Health & Term Life',
-    experience: '9 yrs',
-    languages: ['Hindi', 'English'],
-    city: 'Ranchi (HQ)',
-    accent: 'from-clay to-gold',
+    id: "gaurav-jayswal",
+    name: "Gaurav Jayswal",
+    initials: "GJ",
+    role: "Founder & Director",
+    specialization: "All Insurance & Loans",
+    experience: "7+ years",
+    languages: ["Hindi", "English"],
+    city: "Ranchi",
+    accent: "from-cobalt to-cobalt/70",
   },
   {
-    id: 'a2',
-    name: 'Ankit Mehta',
-    initials: 'AM',
-    role: 'Motor & Commercial Advisor',
-    specialization: 'Car, Bike & Commercial Vehicle',
-    experience: '7 yrs',
-    languages: ['Hindi', 'English', 'Bengali'],
-    city: 'Jamshedpur',
-    accent: 'from-pine to-sage',
+    id: "priya-sinha",
+    name: "Priya Sinha",
+    initials: "PS",
+    role: "Senior Advisor",
+    specialization: "Motor & Health Insurance",
+    experience: "8 years",
+    languages: ["Hindi", "English", "Angika"],
+    city: "Ranchi",
+    accent: "from-cobalt to-cobalt/70",
   },
   {
-    id: 'a3',
-    name: 'Rashmi Kumari',
-    initials: 'RK',
-    role: 'Loans & Wealth Advisor',
-    specialization: 'Home, Gold & Business Loans',
-    experience: '6 yrs',
-    languages: ['Hindi', 'Angika'],
-    city: 'Patna',
-    accent: 'from-gold to-clay',
+    id: "amit-kumar",
+    name: "Amit Kumar",
+    initials: "AK",
+    role: "Life & Health Specialist",
+    specialization: "Term Life & Family Floater",
+    experience: "6 years",
+    languages: ["Hindi", "English", "Bhojpuri"],
+    city: "Patna",
+    accent: "from-emerald-500 to-emerald-600",
   },
   {
-    id: 'a4',
-    name: 'Sandeep Rao',
-    initials: 'SR',
-    role: 'Claims Specialist',
-    specialization: 'End-to-end Claims Follow-through',
-    experience: '11 yrs',
-    languages: ['Hindi', 'English', 'Bhojpuri'],
-    city: 'Dhanbad',
-    accent: 'from-sage to-pine',
+    id: "nehra-rawat",
+    name: "Neha Rawat",
+    initials: "NR",
+    role: "Claims Specialist",
+    specialization: "Claims Processing & Settlement",
+    experience: "5 years",
+    languages: ["Hindi", "English"],
+    city: "Jamshedpur",
+    accent: "from-amber-500 to-orange-500",
   },
-]
+  {
+    id: "rahul-verma",
+    name: "Rahul Verma",
+    initials: "RV",
+    role: "Commercial Insurance Advisor",
+    specialization: "Commercial Vehicle & Fleet",
+    experience: "7 years",
+    languages: ["Hindi", "English", "Maithili"],
+    city: "Hazaribagh",
+    accent: "from-purple-500 to-pink-500",
+  },
+];
