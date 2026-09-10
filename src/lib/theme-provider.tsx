@@ -19,18 +19,24 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
-    const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored) {
-      setTheme(stored);
-      document.documentElement.classList.toggle("light", stored === "light");
-    }
+    const stored = localStorage.getItem("policyadda-theme") as Theme | null;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initial = stored || (prefersDark ? "dark" : "light");
+    setTheme(initial);
+    applyTheme(initial);
   }, []);
+
+  function applyTheme(t: Theme) {
+    const root = document.documentElement;
+    root.classList.remove("dark", "light");
+    root.classList.add(t);
+  }
 
   function toggle() {
     const next = theme === "dark" ? "light" : "dark";
     setTheme(next);
-    localStorage.setItem("theme", next);
-    document.documentElement.classList.toggle("light", next === "light");
+    localStorage.setItem("policyadda-theme", next);
+    applyTheme(next);
   }
 
   if (!mounted) {
