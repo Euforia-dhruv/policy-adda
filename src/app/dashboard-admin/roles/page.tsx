@@ -1,14 +1,25 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 import { Icon } from "@/components/icons";
 
-const roles = [
-  { name: "admin", label: "Administrator", description: "Full system access. Can manage users, employees, policies, and all settings.", users: 1, color: "text-red-400", bgColor: "bg-red-500/10" },
-  { name: "manager", label: "Manager", description: "Can manage team members, assignments, and view all applications.", users: 1, color: "text-purple-400", bgColor: "bg-purple-500/10" },
-  { name: "executive", label: "Customer Executive", description: "Can manage assigned customers and applications. Can add follow-ups.", users: 3, color: "text-emerald-400", bgColor: "bg-emerald-500/10" },
-  { name: "support", label: "Support Team", description: "Can handle support tickets and respond to customer queries.", users: 2, color: "text-amber-400", bgColor: "bg-amber-500/10" },
-  { name: "customer", label: "Customer", description: "Can view own policies, applications, documents, and create support tickets.", users: 241, color: "text-blue-400", bgColor: "bg-blue-500/10" },
-];
+interface RoleWithCount {
+  name: string;
+  label: string;
+  description: string;
+  count: number;
+  color: string;
+  bgColor: string;
+}
+
+const roleConfig: Record<string, { label: string; description: string; color: string; bgColor: string }> = {
+  admin: { label: "Administrator", description: "Full system access. Can manage users, employees, policies, and all settings.", color: "text-red-400", bgColor: "bg-red-500/10" },
+  manager: { label: "Manager", description: "Can manage team members, assignments, and view all applications.", color: "text-purple-400", bgColor: "bg-purple-500/10" },
+  executive: { label: "Customer Executive", description: "Can manage assigned customers and applications. Can add follow-ups.", color: "text-emerald-400", bgColor: "bg-emerald-500/10" },
+  support: { label: "Support Team", description: "Can handle support tickets and respond to customer queries.", color: "text-amber-400", bgColor: "bg-amber-500/10" },
+  customer: { label: "Customer", description: "Can view own policies, applications, documents, and create support tickets.", color: "text-blue-400", bgColor: "bg-blue-500/10" },
+};
 
 const permissions = [
   { action: "View own profile", admin: true, manager: true, executive: true, support: true, customer: true },
@@ -24,6 +35,33 @@ const permissions = [
 ];
 
 export default function RolesPage() {
+  const [roles, setRoles] = useState<RoleWithCount[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const supabase = createClient();
+      const { data: users } = await supabase.from("users").select("role");
+
+      const counts: Record<string, number> = {};
+      users?.forEach((u) => { counts[u.role] = (counts[u.role] || 0) + 1; });
+
+      const rolesList: RoleWithCount[] = Object.entries(roleConfig).map(([name, config]) => ({
+        name,
+        ...config,
+        count: counts[name] || 0,
+      }));
+
+      setRoles(rolesList);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div className="flex items-center justify-center py-20"><div className="h-8 w-8 animate-spin rounded-full border-2 border-iris-gleam border-t-transparent" /></div>;
+  }
+
   return (
     <div className="space-y-8">
       <div>
@@ -40,7 +78,7 @@ export default function RolesPage() {
               </span>
               <div>
                 <h3 className="font-medium text-ivory">{role.label}</h3>
-                <p className="text-xs text-ash">{role.users} users</p>
+                <p className="text-xs text-ash">{role.count} users</p>
               </div>
             </div>
             <p className="mt-3 text-sm text-ash">{role.description}</p>

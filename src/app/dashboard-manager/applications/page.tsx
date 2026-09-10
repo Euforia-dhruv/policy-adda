@@ -1,31 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 import { Icon } from "@/components/icons";
+import type { Application } from "@/types/database";
 
-const mockApplications = [
-  { id: "APP-201", customer: "Rahul Kumar", employee: "Priya Sinha", policy: "Car Comprehensive", status: "processing", submitted: "05 Sep 2026" },
-  { id: "APP-202", customer: "Sunita Devi", employee: "Amit Kumar", policy: "Family Floater", status: "documents_pending", submitted: "03 Sep 2026" },
-  { id: "APP-203", customer: "Amit Singh", employee: "Neha Rawat", policy: "Term Life", status: "advisor_assigned", submitted: "01 Sep 2026" },
-  { id: "APP-204", customer: "Priya Gupta", employee: "Rahul Verma", policy: "Car Insurance", status: "under_review", submitted: "28 Aug 2026" },
-  { id: "APP-205", customer: "Vikram Prasad", employee: "Priya Sinha", policy: "Health Insurance", status: "approved", submitted: "25 Aug 2026" },
-  { id: "APP-206", customer: "Neha Kumari", employee: "Amit Kumar", policy: "Bike Insurance", status: "settled", submitted: "20 Aug 2026" },
-];
+type AppWithDetails = Application & {
+  customer: { full_name: string } | null;
+  policy: { name: string } | null;
+  assigned_employee: { full_name: string } | null;
+};
 
 const statusColors: Record<string, string> = {
   submitted: "bg-blue-500/10 text-blue-400",
   under_review: "bg-amber-500/10 text-amber-400",
   documents_pending: "bg-orange-500/10 text-orange-400",
   advisor_assigned: "bg-purple-500/10 text-purple-400",
-  processing: "bg-cobalt/10 text-cobalt",
+  processing: "bg-iris-gleam/10 text-iris-gleam",
   approved: "bg-emerald-500/10 text-emerald-400",
   rejected: "bg-red-500/10 text-red-400",
   settled: "bg-emerald-500/10 text-emerald-400",
 };
 
 export default function ManagerApplicationsPage() {
+  const [applications, setApplications] = useState<AppWithDetails[]>([]);
+  const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
-  const filtered = filter === "all" ? mockApplications : mockApplications.filter((a) => a.status === filter);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const supabase = createClient();
+      const { data } = await supabase
+        .from("applications")
+        .select("*, customer:users!applications_customer_id_fkey(full_name), policy:policies(name), assigned_employee:users!applications_assigned_employee_id_fkey(full_name)")
+        .order("submitted_at", { ascending: false });
+      setApplications((data as AppWithDetails[]) || []);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  const filtered = filter === "all" ? applications : applications.filter((a) => a.status === filter);
+
+  if (loading) {
+    return <div className="flex items-center justify-center py-20"><div className="h-8 w-8 animate-spin rounded-full border-2 border-iris-gleam border-t-transparent" /></div>;
+  }
 
   return (
     <div className="space-y-8">
@@ -36,38 +55,42 @@ export default function ManagerApplicationsPage() {
 
       <div className="flex flex-wrap gap-2">
         {["all", "submitted", "under_review", "processing", "approved", "settled"].map((s) => (
-          <button key={s} onClick={() => setFilter(s)} className={`rounded-full px-4 py-2 text-xs font-medium transition-colors ${filter === s ? "bg-cobalt text-white" : "border border-white/10 text-ash hover:text-ivory"}`}>
+          <button key={s} onClick={() => setFilter(s)} className={`rounded-full px-4 py-2 text-xs font-medium transition-colors ${filter === s ? "bg-iris-gleam text-void" : "border border-white/10 text-ash hover:text-ivory"}`}>
             {s === "all" ? "All" : s.replace(/_/g, " ")}
           </button>
         ))}
       </div>
 
-      <div className="space-y-3">
-        {filtered.map((app) => (
-          <div key={app.id} className="card-material rounded-xl p-5">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <div className="flex items-center gap-3">
-                  <h3 className="font-medium text-ivory">{app.customer}</h3>
-                  <span className="text-xs text-ash">{app.id}</span>
+      {filtered.length === 0 ? (
+        <div className="card-material rounded-xl p-12 text-center">
+          <Icon name="file-text" size={48} className="mx-auto text-ash/40" />
+          <h3 className="mt-4 text-lg font-medium text-ivory">No applications found</h3>
+        </div>
+      ) : (
+        <div className="space-y-3">
+          {filtered.map((app) => (
+            <div key={app.id} className="card-material rounded-xl p-5">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <div className="flex items-center gap-3">
+                    <h3 className="font-medium text-ivory">{app.customer?.full_name || "Unknown"}</h3>
+                    <span className="text-xs text-ash">#{app.id.slice(0, 8)}</span>
+                  </div>
+                  <p className="mt-1 text-sm text-ash">
+                    {app.policy?.name || "Policy"} · Assigned to: <span className="text-ivory">{app.assigned_employee?.full_name || "Unassigned"}</span>
+                  </p>
+                  <p className="text-xs text-ash">Submitted: {new Date(app.submitted_at).toLocaleDateString()}</p>
                 </div>
-                <p className="mt-1 text-sm text-ash">
-                  {app.policy} · Assigned to: <span className="text-ivory">{app.employee}</span>
-                </p>
-                <p className="text-xs text-ash">Submitted: {app.submitted}</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[app.status]}`}>
-                  {app.status.replace(/_/g, " ")}
-                </span>
-                <button className="rounded-lg border border-white/10 p-2 text-ash hover:text-ivory">
-                  <Icon name="eye" size={16} />
-                </button>
+                <div className="flex items-center gap-3">
+                  <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[app.status] || "bg-ash/10 text-ash"}`}>
+                    {app.status.replace(/_/g, " ")}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
