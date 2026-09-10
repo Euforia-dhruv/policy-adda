@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, DM_Serif_Display, Roboto_Mono } from "next/font/google";
+import { ThemeProvider } from "@/lib/theme-provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -44,9 +45,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${dmSerif.variable} ${robotoMono.variable} h-full antialiased dark`}>
-      <body className="min-h-full flex flex-col bg-canvas text-ash font-sans">
-        {children}
+    <html lang="en" className={`${inter.variable} ${dmSerif.variable} ${robotoMono.variable} h-full antialiased dark`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-background text-muted-foreground font-sans">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/icons";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navLinks = [
   { label: "Why Adda", href: "/about" },
@@ -69,9 +70,10 @@ export function Nav() {
         </div>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <a
             href={PHONE_HREF}
-            className="hidden items-center gap-2 rounded-full bg-cobalt px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-cobalt-dark sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-iris-gleam px-5 py-2.5 text-sm font-medium text-void transition-colors hover:bg-deep-iris sm:inline-flex"
           >
             <Icon name="phone" size={16} />
             {PHONE_DISPLAY}
@@ -115,7 +117,7 @@ export function Nav() {
               ))}
               <a
                 href={PHONE_HREF}
-                className="mt-3 flex items-center justify-center gap-2 rounded-full bg-cobalt px-5 py-3 text-sm font-medium text-white"
+                className="mt-3 flex items-center justify-center gap-2 rounded-full bg-iris-gleam px-5 py-3 text-sm font-medium text-void"
               >
                 <Icon name="phone" size={16} />
                 {PHONE_DISPLAY}
