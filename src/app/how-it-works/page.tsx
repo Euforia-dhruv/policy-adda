@@ -3,10 +3,10 @@ import { Footer } from "@/components/layout/Footer";
 import { Icon } from "@/components/icons";
 
 const steps = [
-  { num: "01", title: "Tell us what you need", desc: "Fill out the form or give us a call. We will understand your requirements in minutes." },
-  { num: "02", title: "Compare your options", desc: "We compare plans from 20+ insurers and explain the differences in plain language." },
-  { num: "03", title: "Choose with confidence", desc: "Pick the plan that fits. No pressure, no hidden fees — just honest advice." },
-  { num: "04", title: "We handle the rest", desc: "Policy issuance, documentation, renewals — we manage it all. You just live your life." },
+  { number: "01", title: "Explore", desc: "Browse insurance categories and learn about different types of coverage available." },
+  { number: "02", title: "Share Your Needs", desc: "Tell us what you're looking for — vehicle type, family size, budget, or specific requirements." },
+  { number: "03", title: "Compare Options", desc: "Your advisor presents options from multiple insurer partners with clear comparisons." },
+  { number: "04", title: "Get Guided Support", desc: "From paperwork to claims — your advisor stays with you throughout the process." },
 ];
 
 export default function HowItWorksPage() {
@@ -20,22 +20,34 @@ export default function HowItWorksPage() {
             How It Works
           </span>
           <h1 className="mt-5 text-4xl font-medium text-ivory sm:text-5xl">
-            Insurance made simple, in four steps
+            Simple process, real guidance
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-ash">
-            From first call to claim settlement, Policy Adda makes the entire
-            process effortless. Here is how it works.
+            From first call to claims assistance — here&apos;s how we work.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {steps.map((step) => (
-            <div key={step.num} className="card-material rounded-xl p-8">
-              <span className="font-display text-4xl font-medium text-cobalt/30">{step.num}</span>
-              <h3 className="mt-4 text-xl font-medium text-ivory">{step.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ash">{step.desc}</p>
+        <div className="mt-16 space-y-8">
+          {steps.map((step, i) => (
+            <div key={step.number} className="flex gap-6">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-cobalt/10 text-cobalt">
+                <span className="text-lg font-medium">{step.number}</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-medium text-ivory">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ash">{step.desc}</p>
+              </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 card-material rounded-xl p-8">
+          <p className="text-xs leading-relaxed text-ash/80">
+            <Icon name="info" size={14} className="mr-1 inline text-cobalt" />
+            Policy Adda facilitates the comparison and purchase of insurance
+            policies from licensed insurance companies. The final policy is issued
+            by and subject to the terms of the respective insurer.
+          </p>
         </div>
       </main>
       <Footer />

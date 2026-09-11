@@ -2,21 +2,10 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 const quickLinks = [
-  { label: "Why Policy Adda", href: "/about" },
-  { label: "Insurance Products", href: "#products" },
-  { label: "How Claims Work", href: "#claims" },
-  { label: "Find a Branch", href: "#branches" },
-  { label: "Meet the Advisors", href: "#advisors" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About Policy Adda", href: "/about" },
+  { label: "Insurance Products", href: "/policies" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact Us", href: "/contact" },
-];
-
-const branchLinks = [
-  { label: "Ranchi — Head Office", href: "#branches" },
-  { label: "Jamshedpur", href: "#branches" },
-  { label: "Dhanbad", href: "#branches" },
-  { label: "Patna", href: "#branches" },
-  { label: "Hazaribagh", href: "#branches" },
 ];
 
 const contactDetails = [
@@ -40,13 +29,9 @@ export function Footer() {
             </span>
           </Link>
           <p className="max-w-xs text-sm leading-relaxed text-ash">
-            Your neighbourhood insurance and loan consultancy. A named advisor, a real
-            branch desk, and hands-on claims follow-through — since 2018.
+            Your neighbourhood insurance and loan consultancy. Named advisors,
+            multiple insurer options, and guidance through the entire process.
           </p>
-          <div className="flex items-center gap-2 text-xs text-ash">
-            <span className="availability-dot" />
-            Available now across 9+ branches
-          </div>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -62,20 +47,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="flex flex-col gap-3">
-          <h3 className="text-sm font-semibold text-ivory">Our Branches</h3>
-          <ul className="flex flex-col gap-2">
-            {branchLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} className="text-sm text-ash transition-colors hover:text-cobalt">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 lg:col-span-2">
           <h3 className="text-sm font-semibold text-ivory">Get in Touch</h3>
           <ul className="flex flex-col gap-3">
             {contactDetails.map((item) => (
@@ -100,15 +72,25 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/5">
-        <div className="container-page flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-ash">
-            © {new Date().getFullYear()} Policy Adda. All rights reserved.
-          </p>
-          <p className="max-w-xl text-xs leading-relaxed text-ash/80">
-            Policies are underwritten by the respective insurer and are subject to their terms
-            and conditions. Policy Adda is a licensed insurance facilitator and earns a commission
-            from insurers — you pay the same premium as buying direct.
-          </p>
+        <div className="container-page py-6">
+          <div className="flex flex-col gap-4 text-xs text-ash/80">
+            <p>
+              © {new Date().getFullYear()} Policy Adda. All rights reserved.
+            </p>
+            <p className="leading-relaxed">
+              Policy Adda is an insurance and loan consultancy. We facilitate the
+              comparison and purchase of insurance policies from licensed insurance
+              companies. All policies are underwritten by the respective insurers
+              and are subject to their terms and conditions.
+            </p>
+            <p className="leading-relaxed">
+              Insurance is the subject matter of solicitation. For more details on
+              coverage, terms, conditions, exclusions, and claims, please refer to
+              the policy wording of the respective insurer. Product features,
+              benefits, and premiums may vary depending on the insurer, selected
+              plan, add-ons, and underwriting.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

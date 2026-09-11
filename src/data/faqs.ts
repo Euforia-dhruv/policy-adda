@@ -7,17 +7,17 @@ export const faqs: FaqItem[] = [
   {
     question: "What services does Policy Adda offer?",
     answer:
-      "Policy Adda is a full-service insurance and finance consultancy. We offer Motor Insurance (car, bike, commercial vehicle), Health Insurance (family, critical illness, corporate), Life Insurance (term, whole life, endowment, moneyback), Travel Insurance (international, domestic, student), and Loan services (personal, business, home, car, LAP, and more).",
+      "Policy Adda is an insurance and loan consultancy. We help you compare and choose from insurance policies across multiple insurer partners, and assist with loan advisory services. We are not an insurance company — policies are underwritten by the respective insurers.",
   },
   {
     question: "Which insurance companies does Policy Adda work with?",
     answer:
-      "We work with 12+ insurer partners including ICICI Lombard, HDFC ERGO, Bajaj Allianz, TATA AIG, IFFCO Tokio, Bharti AXA, United India Insurance, Cholamandalam, Kotak, Liberty General, Future Generali, and Universal Sompo. We compare plans across all partners to find the best fit for you.",
+      "We work with 12+ insurer partners including ICICI Lombard, HDFC ERGO, Bajaj Allianz, TATA AIG, IFFCO Tokio, Bharti AXA, United India Insurance, Cholamandalam, Kotak, Liberty General, Future Generali, and Universal Sompo. Product availability and terms vary by insurer.",
   },
   {
     question: "How is Policy Adda different from online marketplaces?",
     answer:
-      "Online marketplaces give you a price and disappear. Policy Adda gives you a named advisor, a branch desk near you, and someone who stays until your claim is settled. We are a real relationship, not a checkout page.",
+      "Online marketplaces give you a price comparison. Policy Adda gives you a named advisor who understands your needs and can guide you through the process — from selection to claims assistance.",
   },
   {
     question: "Do I have to visit a branch to buy a policy?",
@@ -32,6 +32,6 @@ export const faqs: FaqItem[] = [
   {
     question: "Does Policy Adda also help with loans?",
     answer:
-      "Yes. We are not just an insurance agency — we also help with Personal Loans, Business Loans, Home Loans, Car Loans, Bike Loans, Loan Against Property (LAP), Loan Against Security (LAS), Equipment Machine Loans, Gold Loans, and more.",
+      "Yes. We also help with Personal Loans, Business Loans, Home Loans, Car Loans, Bike Loans, Loan Against Property (LAP), Loan Against Security (LAS), Equipment Machine Loans, Gold Loans, and more.",
   },
 ];

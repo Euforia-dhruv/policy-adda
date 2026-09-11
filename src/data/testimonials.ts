@@ -18,7 +18,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t2",
     quote:
-      "Great experience, extraordinary customer service. They explained every policy option clearly and helped me choose the right one for my family.",
+      "Great experience, extraordinary customer service.",
     clientType: "Entrepreneur",
     location: "Ranchi",
     initials: "MA",
@@ -26,7 +26,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t3",
     quote:
-      "Best insurance agency, it has a great service. When I needed help with my claim, their team was with me every step of the way.",
+      "Best insurance agency, it has a great service.",
     clientType: "Doctor",
     location: "Patna",
     initials: "SJ",

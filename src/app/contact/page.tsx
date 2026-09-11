@@ -13,11 +13,11 @@ export default function ContactPage() {
             Contact Us
           </span>
           <h1 className="mt-5 text-4xl font-medium text-ivory sm:text-5xl">
-            Talk to a real advisor today
+            Talk to an advisor today
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-ash">
-            Skip the call-centre queue. Reach us directly and get honest,
-            personalised advice within one working day.
+            Reach us directly for honest, personalised guidance on insurance and
+            loan options.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
             </div>
             <h3 className="mt-4 font-medium text-ivory">WhatsApp</h3>
             <p className="mt-1 text-sm text-ash">Chat with us</p>
-            <p className="text-xs text-ash">Replies in ~4 minutes</p>
+            <p className="text-xs text-ash">Quick response during business hours</p>
           </a>
 
           <a
@@ -57,7 +57,7 @@ export default function ContactPage() {
             </div>
             <h3 className="mt-4 font-medium text-ivory">Email</h3>
             <p className="mt-1 text-sm text-ash">info@policyadda.co.in</p>
-            <p className="text-xs text-ash">We respond within 24 hours</p>
+            <p className="text-xs text-ash">We respond within one working day</p>
           </a>
         </div>
 

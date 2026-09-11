@@ -16,10 +16,9 @@ export default function AboutPage() {
             Your neighbourhood insurance &amp; loan consultancy
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-ash">
-            Founded in 2018 at Plaza Chowk, Ranchi by Gaurav Jayswal, Policy Adda was
-            built on a simple belief: insurance should be personal, transparent, and
-            accountable. We are not a faceless marketplace — we are real people with real
-            branch desks who stay until your claim is settled.
+            Policy Adda was built on a simple belief: insurance should be personal,
+            transparent, and accountable. We are not a faceless marketplace — we are
+            real people who stay until you understand your coverage.
           </p>
         </div>
 
@@ -28,17 +27,17 @@ export default function AboutPage() {
             {
               icon: "users",
               title: "Named Advisors",
-              desc: "Every customer gets a dedicated advisor who knows their file and speaks their language.",
-            },
-            {
-              icon: "pin",
-              title: "Real Branch Desks",
-              desc: "9+ branches across Jharkhand, Bihar, and Noida. Walk in, sit down, and talk to someone.",
+              desc: "Every customer gets a dedicated advisor who knows their needs and speaks their language.",
             },
             {
               icon: "shield",
-              title: "Claims Follow-Through",
-              desc: "We do not disappear after checkout. Our team follows your claim to settlement.",
+              title: "Multiple Insurer Options",
+              desc: "We work with 12+ insurer partners so you can compare and choose the right coverage.",
+            },
+            {
+              icon: "headphones",
+              title: "Claims Assistance",
+              desc: "We help guide you through the claims process with your insurer.",
             },
           ].map((item) => (
             <div key={item.title} className="card-material rounded-xl p-6">
@@ -52,19 +51,27 @@ export default function AboutPage() {
         </div>
 
         <div className="mt-16 card-material rounded-xl p-8">
-          <h2 className="text-2xl font-medium text-ivory">Our Values</h2>
+          <h2 className="text-2xl font-medium text-ivory">Our Mission</h2>
           <p className="mt-4 text-base leading-relaxed text-ash">
-            Teamwork · Respect for all people · Unquestionable integrity · Excellence
-            in everything we do · Speed in servicing · Truthfulness
+            To make insurance accessible and understandable for families. We believe
+            every customer deserves a named advisor, clear information, and guidance
+            through the entire process — from selection to claims.
           </p>
         </div>
 
         <div className="mt-16 card-material rounded-xl p-8">
-          <h2 className="text-2xl font-medium text-ivory">Our Mission</h2>
-          <p className="mt-4 text-base leading-relaxed text-ash">
-            To make insurance simple, accessible, and trustworthy for every family in
-            Jharkhand, Bihar, and beyond. We believe every customer deserves a named
-            advisor, clear information, and someone who stays until the job is done.
+          <h2 className="text-2xl font-medium text-ivory">Important Disclosure</h2>
+          <p className="mt-4 text-sm leading-relaxed text-ash">
+            Policy Adda is an insurance and loan consultancy. We facilitate the
+            comparison and purchase of insurance policies from licensed insurance
+            companies. All policies are underwritten by the respective insurers and
+            are subject to their terms and conditions. Policy Adda earns a commission
+            from insurer partners — you pay the same premium as buying direct.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-ash">
+            Insurance is the subject matter of solicitation. For more details on
+            coverage, terms, conditions, exclusions, and claims, please refer to the
+            policy wording of the respective insurer.
           </p>
         </div>
       </main>

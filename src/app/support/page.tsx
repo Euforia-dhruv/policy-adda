@@ -17,7 +17,7 @@ export default function SupportPage() {
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-ash">
             Whether you have a question about your policy, need help with a claim,
-            or want to understand your options — reach out and we will respond quickly.
+            or want to understand your options — reach out and we will respond.
           </p>
         </div>
 
@@ -44,17 +44,17 @@ export default function SupportPage() {
                 <Icon name="chat" size={20} className="text-emerald-400" />
                 <div>
                   <p className="font-medium text-ivory">WhatsApp</p>
-                  <p className="text-xs text-ash">Quick responses</p>
+                  <p className="text-xs text-ash">Quick responses during business hours</p>
                 </div>
               </a>
               <a
-                href="mailto:support@policyadda.co.in"
+                href="mailto:info@policyadda.co.in"
                 className="flex items-center gap-3 rounded-lg border border-white/10 p-4 transition-colors hover:bg-elevated"
               >
                 <Icon name="mail" size={20} className="text-amber-400" />
                 <div>
-                  <p className="font-medium text-ivory">support@policyadda.co.in</p>
-                  <p className="text-xs text-ash">Within 24 hours</p>
+                  <p className="font-medium text-ivory">info@policyadda.co.in</p>
+                  <p className="text-xs text-ash">Within one working day</p>
                 </div>
               </a>
             </div>

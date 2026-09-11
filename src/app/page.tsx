@@ -176,7 +176,7 @@ function Hero() {
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-[#847dff]/30 bg-[#847dff]/10 px-4 py-1.5 text-xs font-medium tracking-wider text-[#d1c9ff] uppercase">
               <Sparkles size={14} />
-              Trusted by 8,000+ Families
+              Your trusted insurance advisor
             </span>
           </motion.div>
 
@@ -239,11 +239,6 @@ function Hero() {
             </span>
             <span className="h-1 w-1 rounded-full bg-white/20" />
             <span className="flex items-center gap-2">
-              <MapPin size={14} className="text-[#847dff]" />
-              9+ Branches
-            </span>
-            <span className="h-1 w-1 rounded-full bg-white/20" />
-            <span className="flex items-center gap-2">
               <Clock size={14} className="text-[#847dff]" />
               Since 2018
             </span>
@@ -279,25 +274,25 @@ const benefits = [
   {
     icon: "🛣️",
     title: "Roadside Assistance",
-    desc: "24/7 breakdown support — flat tyre, dead battery, or empty tank. We send help to your exact GPS location within minutes, anywhere in India.",
+    desc: "Breakdown support may be available as an add-on depending on your insurer and plan. Coverage, response time, and service area vary by provider.",
     color: "#847dff",
   },
   {
     icon: "🏥",
     title: "Cashless Claims",
-    desc: "Walk into any network hospital or garage. Show your policy. Walk out. We settle the bill directly — no reimbursements, no running around.",
+    desc: "Many insurers offer cashless claim settlement at network hospitals and garages. Eligibility depends on your policy, insurer network, and pre-authorization.",
     color: "#00b3dd",
   },
   {
     icon: "🛡️",
     title: "Personal Accident Cover",
-    desc: "Accidents don't announce themselves. Our cover ensures your family is financially protected — even when you can't be there for them.",
+    desc: "Personal accident cover provides financial protection in case of accidental death or disability. Coverage terms and limits vary by insurer and plan.",
     color: "#dd90d8",
   },
   {
     icon: "📋",
     title: "Zero Depreciation",
-    desc: "Full claim amount without deduction for part wear. Plastic, rubber, glass — everything replaced at 100% cost, not a rupee less.",
+    desc: "An optional add-on available with select motor insurance plans. Reduces or eliminates depreciation deduction on claimable parts. Availability and terms vary by insurer.",
     color: "#90b8f0",
   },
 ];
